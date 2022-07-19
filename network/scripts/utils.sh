@@ -57,30 +57,30 @@ setGlobals() {
     CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_RETAILER_CA
     CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/retailer.pharma-network.com/users/Admin@retailer.pharma-network.com/msp
     if [ "$PEER" -eq 0 ]; then
-      CORE_PEER_ADDRESS=peer0.retailer.pharma-network.com:9051
+      CORE_PEER_ADDRESS=peer0.retailer.pharma-network.com:11051
     fi
     if [ "$PEER" -eq 1 ]; then
-      CORE_PEER_ADDRESS=peer1.retailer.pharma-network.com:10051
+      CORE_PEER_ADDRESS=peer1.retailer.pharma-network.com:12051
     fi
   elif [ "$ORG" == 'consumer' ]; then
     CORE_PEER_LOCALMSPID="consumerMSP"
     CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_CONSUMER_CA
     CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/consumer.pharma-network.com/users/Admin@consumer.pharma-network.com/msp
     if [ "$PEER" -eq 0 ]; then
-      CORE_PEER_ADDRESS=peer0.consumer.pharma-network.com:9051
+      CORE_PEER_ADDRESS=peer0.consumer.pharma-network.com:13051
     fi
     if [ "$PEER" -eq 1 ]; then
-      CORE_PEER_ADDRESS=peer1.consumer.pharma-network.com:10051
+      CORE_PEER_ADDRESS=peer1.consumer.pharma-network.com:14051
     fi      
   elif [ "$ORG" == 'transporter' ]; then
     CORE_PEER_LOCALMSPID="transporterMSP"
     CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_TRANSPORTER_CA
     CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/transporter.pharma-network.com/users/Admin@transporter.pharma-network.com/msp
     if [ "$PEER" -eq 0 ]; then
-      CORE_PEER_ADDRESS=peer0.transporter.pharma-network.com:9051
+      CORE_PEER_ADDRESS=peer0.transporter.pharma-network.com:15051
     fi
     if [ "$PEER" -eq 1 ]; then
-      CORE_PEER_ADDRESS=peer1.transporter.pharma-network.com:10051
+      CORE_PEER_ADDRESS=peer1.transporter.pharma-network.com:16051
     fi
   else
     echo "================== ERROR !!! ORG Unknown =================="
@@ -159,19 +159,11 @@ instantiateChaincode() {
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
     peer chaincode instantiate -o orderer.pharma-network.com:7050 -C "$CHANNEL_NAME" -n pharmanet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 -C "$CHANNEL_NAME" -n pharmanet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 -C "$CHANNEL_NAME" -n pharmanet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 -C "$CHANNEL_NAME" -n pharmanet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 -C "$CHANNEL_NAME" -n pharmanet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["pharmanet.usercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member','upgradMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member','upgradMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member','upgradMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member','upgradMSP.member')" >&log.txt
-    peer chaincode instantiate -o orderer.pharma-network.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["pharmanet.usercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member','upgradMSP.member')" >&log.txt
+    peer chaincode instantiate -o orderer.pharma-network.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["pharmanet.manufacturercontract:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
     res=$?
     set +x
   fi
@@ -189,12 +181,12 @@ upgradeChaincode() {
 
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode upgrade -o orderer.pharma-network.com:7050 -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":["org.pharma-network.pharmanet:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member','upgradMSP.member')" >&log.txt
+    peer chaincode upgrade -o orderer.pharma-network.com:7050 -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":["org.pharma-network.pharmanet:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode upgrade -o orderer.pharma-network.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":["org.pharma-network.pharmanet:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member','upgradMSP.member')" >&log.txt
+    peer chaincode upgrade -o orderer.pharma-network.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n pharmanet -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":["org.pharma-network.pharmanet:instantiate"]}' -P "OR ('manufacturerMSP.member','consumerMSP.member')" >&log.txt
     res=$?
     set +x
   fi

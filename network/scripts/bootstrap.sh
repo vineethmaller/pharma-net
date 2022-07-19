@@ -22,7 +22,7 @@ VERBOSE="$5"
 LANGUAGE=$(echo "$LANGUAGE" | tr [:upper:] [:lower:])
 COUNTER=1
 MAX_RETRY=15
-ORGS="manufacturer users"  #UPDATE REQUIRED
+ORGS="manufacturer distributor retailer consumer transporter"  #UPDATE REQUIRED
 
 if [ "$LANGUAGE" = "node" ]; then
   CC_SRC_PATH="/opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode/"
@@ -62,7 +62,6 @@ joinChannel() {
       echo
     done
   done
-  joinChannelWithRetry 2 users   #UPDATE REQUIRED
 }
 
 ## Create channel
@@ -77,7 +76,7 @@ joinChannel
 echo "Updating anchor peers for manufacturer..."
 updateAnchorPeers 0 'manufacturer'
 echo "Updating anchor peers for distributer..."
-updateAnchorPeers 0 'distributer'
+updateAnchorPeers 0 'distributor'
 echo "Updating anchor peers for retailer..."
 updateAnchorPeers 0 'retailer'
 echo "Updating anchor peers for consumer..."

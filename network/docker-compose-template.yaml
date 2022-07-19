@@ -43,7 +43,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.distributor.pharma-network.com
       - FABRIC_CA_SERVER_TLS_ENABLED=false
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.distributor.pharma-network.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/DISTRIBUTER_CA_PRIVATE_KEY
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/DISTRIBUTOR_CA_PRIVATE_KEY
     ports:
       - "8054:8054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.distributor.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/DISTRIBUTOR_CA_PRIVATE_KEY
