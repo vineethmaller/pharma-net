@@ -75,11 +75,11 @@ class ManufacturerContract extends Contract {
 
 					return newDrugObject;
 				}
-				return MESSAGES.SERIAL_NO_IS_ALREADY_USED;
+				throw new Error(MESSAGES.SERIAL_NO_IS_ALREADY_USED);
 			}
-			return MESSAGES.COMPANY_IS_NOT_REGISTERED;
+			throw new Error(MESSAGES.COMPANY_IS_NOT_REGISTERED);
 		}
-		return ERRORS.ROLE_AUTHORIZATION_ERROR;
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
 }
 

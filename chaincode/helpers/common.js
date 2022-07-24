@@ -118,7 +118,24 @@ class Common {
 			}
 			return;
 		}
-		return MESSAGES.TRANSPORTER_IS_NOT_REGISTERED;
+		throw new Error(MESSAGES.TRANSPORTER_IS_NOT_REGISTERED);
+	}
+
+	/**
+	 * 
+	 * @param {*} ctx 
+	 * @param {*} drugObjectsArray 
+	 * @param {*} buyerID 
+	 * @param {*} shipmentID 
+	 */
+	static updateDrugStateForShipmentDelivery(ctx, drugObjectsArray, buyerID, shipmentID) {
+		for(let drugObject in drugObjectsArray) {
+			let productID = drugObject.productID;
+			drugObject.owner = buyerID;
+			drugObject.shipment.push(shipmentID);
+
+			await ctx.stub.putState(productID, Utils.jsonToBuffer(drugObject));
+		}
 	}
 
 }

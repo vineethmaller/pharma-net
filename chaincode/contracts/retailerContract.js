@@ -55,13 +55,13 @@ class RetailerContract extends Contract {
 
 						return productObject;
 					}
-					return MESSAGES.RETAILER_DOES_NOT_MATCH;
+					throw new Error(MESSAGES.RETAILER_DOES_NOT_MATCH);
 				}
-				return MESSAGES.PRODUCT_NOT_FOUND;
+				throw new Error(MESSAGES.PRODUCT_NOT_FOUND);
 			}
-			return MESSAGES.RETAILER_IS_NOT_REGISTERED;
+			throw new Error(MESSAGES.RETAILER_IS_NOT_REGISTERED);
 		}
-		return ERRORS.ROLE_AUTHORIZATION_ERROR;
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
 }
 

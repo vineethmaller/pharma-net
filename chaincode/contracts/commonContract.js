@@ -59,11 +59,11 @@ class CommonContract extends Contract {
 
 					return newCompanyObject;
 				}
-				return MESSAGES.COMPANY_ALREADY_REGISTERED;
+				throw new Error(MESSAGES.COMPANY_ALREADY_REGISTERED);
 			}
-			return ERRORS.ORGANIZATION_ROLE_DOES_NOT_MATCH_MSP_ID;
+			throw new Error(ERRORS.ORGANIZATION_ROLE_DOES_NOT_MATCH_MSP_ID);
 		}
-		return ERRORS.ROLE_AUTHORIZATION_ERROR;
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
 
 	/**
@@ -119,13 +119,13 @@ class CommonContract extends Contract {
 
 						return newPurchaseOrderObject;
 					}
-					return MESSAGES.INVALID_PURCHASE_ORDER;
+					throw new Error(MESSAGES.INVALID_PURCHASE_ORDER);
 				}
-				return MESSAGES.SELLER_IS_NOT_REGISTERED;
+				throw new Error(MESSAGES.SELLER_IS_NOT_REGISTERED);
 			}
-			return MESSAGES.BUYER_IS_NOT_REGISTERED;
+			throw new Error(MESSAGES.BUYER_IS_NOT_REGISTERED);
 		}
-		return ERRORS.ROLE_AUTHORIZATION_ERROR;
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
 
 	/**
@@ -162,7 +162,7 @@ class CommonContract extends Contract {
 
 						let drugObjectsArray = response;
 						let sellerID = drugObjectsArray[0].owner;
-
+						
 						response = Common.updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterCRN);
 
 						//Checks if the shipment items have been updated successfully
@@ -185,11 +185,11 @@ class CommonContract extends Contract {
 					} 
 					return response;
 				}
-				return MESSAGES.PURCHASE_ORDER_NOT_FOUND;
+				throw new Error(MESSAGES.PURCHASE_ORDER_NOT_FOUND);
 			}
-			return MESSAGES.BUYER_IS_NOT_REGISTERED;
+			throw new Error(MESSAGES.BUYER_IS_NOT_REGISTERED);
 		}
-		return ERRORS.ROLE_AUTHORIZATION_ERROR;
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
 
 	/**
@@ -212,7 +212,7 @@ class CommonContract extends Contract {
 			}
 			return transactionArray;
 		}
-		return MESSAGES.ASSET_NOT_FOUND;
+		throw new Error(MESSAGES.ASSET_NOT_FOUND);
 	}
 
 	/**
@@ -230,7 +230,7 @@ class CommonContract extends Contract {
 		if(productObjectBuffer.length !== 0) {
 			return Utils.bufferToJson(productObjectBuffer);
 		}
-		return MESSAGES.ASSET_NOT_FOUND;
+		throw new Error(MESSAGES.ASSET_NOT_FOUND);
 	}
 }
 

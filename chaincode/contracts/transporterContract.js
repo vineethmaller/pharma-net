@@ -1,9 +1,10 @@
 'use strict';
 
 const { Contract } = require('fabric-contract-api');
-const { Auth } = require('./auth');
-const { Utils } = require('./utils');
-const { SHIPMENT_STATUS, COMPOSITE_KEY_PREFIXES, ERRORS, MESSAGES } = require('./constants');
+const { Auth } = require('../helpers/auth');
+const { Utils } = require('../helpers/utils');
+const { Common } = require('../helpers/common');
+const { SHIPMENT_STATUS, COMPOSITE_KEY_PREFIXES, ERRORS, MESSAGES } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.transportercontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Transporter Smart Contract Instantiated';
@@ -57,10 +58,10 @@ class TransporterContract extends Contract {
 						//Checks if the transporter matches with the shipment
 						if(shipmentObject.transporter === transporterID) {
 
-							let drugList = await fetchDrugsByIDs(ctx, assetList);
+							let drugList = Common.fetchDrugsByIDs(ctx, assetList);
 
 							//Update state of items in shipment
-							await updateDrugStateForShipmentDelivery(ctx, drugList, buyerID, shipmentID);
+							await Common.updateDrugStateForShipmentDelivery(ctx, drugList, buyerID, shipmentID);
 
 							//Update shipment status as delivered
 							shipmentObject.status = SHIPMENT_STATUS.DELIVERED;
@@ -69,39 +70,15 @@ class TransporterContract extends Contract {
 							
 							return shipmentObject;
 						}
-						return MESSAGES.TRANSPORTER_DOES_NOT_MATCH;
+						throw new Error(MESSAGES.TRANSPORTER_DOES_NOT_MATCH);
 					}
-					return MESSAGES.TRANSPORTER_IS_NOT_REGISTERED;
+					throw new Error(MESSAGES.TRANSPORTER_IS_NOT_REGISTERED);
 				}
-				return MESSAGES.SHIPMENT_NOT_FOUND;
+				throw new Error(MESSAGES.SHIPMENT_NOT_FOUND);
 			}
+			throw new Error(MESSAGES.BUYER_IS_NOT_REGISTERED);
 		}
-		return ERRORS.ROLE_AUTHORIZATION_ERROR;
-	}
-
-	async fetchDrugsByIDs(ctx, listOfAssets) {
-		let drugList = [];
-		for(let asset in listOfAssets) {
-			let drugObjectBuffer = ctx.stub.getState(asset);
-
-			if(drugObjectBuffer === 0) {
-				return MESSAGES.ASSET_NOT_FOUND;
-			}
-
-			let drugObject = Utils.bufferToJson(drugObjectBuffer);
-			drugList.push(drugObject);
-		}
-		return drugList;
-	}
-
-	async updateDrugStateForShipmentDelivery(ctx, drugObjectsArray, buyerID, shipmentID) {
-		for(let drugObject in drugObjectsArray) {
-			let productID = drugObject.productID;
-			drugObject.owner = buyerID;
-			drugObject.shipment.push(shipmentID);
-
-			await ctx.stub.putState(productID, Utils.jsonToBuffer(drugObject));
-		}
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
 }
 
