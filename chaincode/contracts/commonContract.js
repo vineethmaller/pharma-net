@@ -4,7 +4,7 @@ const { Contract } = require('fabric-contract-api');
 const { Auth } = require('../helpers/auth');
 const { Utils } = require('../helpers/utils');
 const { Common } = require('../helpers/common');
-const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS, ROLES, SHIPMENT_STATUS } = require('../constants');
+const { COMPOSITE_KEY_PREFIXES, ERRORS, ROLES, SHIPMENT_STATUS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.commoncontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Common Smart Contract Instantiated';
@@ -59,7 +59,7 @@ class CommonContract extends Contract {
 
 					return newCompanyObject;
 				}
-				throw new Error(MESSAGES.COMPANY_ALREADY_REGISTERED);
+				throw new Error(ERRORS.COMPANY_ALREADY_REGISTERED);
 			}
 			throw new Error(ERRORS.ORGANIZATION_ROLE_DOES_NOT_MATCH_MSP_ID);
 		}
@@ -85,7 +85,7 @@ class CommonContract extends Contract {
 
 			//Checks if the drug exists
 			if(response.done) {
-				return MESSAGES.PRODUCT_NOT_FOUND;
+				return ERRORS.PRODUCT_NOT_FOUND;
 			}
 			
 			response = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [buyerCRN]);
@@ -119,11 +119,11 @@ class CommonContract extends Contract {
 
 						return newPurchaseOrderObject;
 					}
-					throw new Error(MESSAGES.INVALID_PURCHASE_ORDER);
+					throw new Error(ERRORS.INVALID_PURCHASE_ORDER);
 				}
-				throw new Error(MESSAGES.SELLER_IS_NOT_REGISTERED);
+				throw new Error(ERRORS.SELLER_IS_NOT_REGISTERED);
 			}
-			throw new Error(MESSAGES.BUYER_IS_NOT_REGISTERED);
+			throw new Error(ERRORS.BUYER_IS_NOT_REGISTERED);
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
@@ -179,9 +179,9 @@ class CommonContract extends Contract {
 					} 
 					throw new Error(INCORRECT_ITEM_COUNT_IN_SHIPMENT);
 				}
-				throw new Error(MESSAGES.PURCHASE_ORDER_NOT_FOUND);
+				throw new Error(ERRORS.PURCHASE_ORDER_NOT_FOUND);
 			}
-			throw new Error(MESSAGES.BUYER_IS_NOT_REGISTERED);
+			throw new Error(ERRORS.BUYER_IS_NOT_REGISTERED);
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
@@ -206,7 +206,7 @@ class CommonContract extends Contract {
 			}
 			return transactionArray;
 		}
-		throw new Error(MESSAGES.ASSET_NOT_FOUND);
+		throw new Error(ERRORS.ASSET_NOT_FOUND);
 	}
 
 	/**
@@ -224,7 +224,7 @@ class CommonContract extends Contract {
 		if(productObjectBuffer.length !== 0) {
 			return Utils.bufferToJson(productObjectBuffer);
 		}
-		throw new Error(MESSAGES.ASSET_NOT_FOUND);
+		throw new Error(ERRORS.ASSET_NOT_FOUND);
 	}
 
 	/**
@@ -239,7 +239,7 @@ class CommonContract extends Contract {
 			let drugObjectBuffer = ctx.stub.getState(asset);
 
 			if(drugObjectBuffer === 0) {
-				throw new Error(MESSAGES.ASSET_NOT_FOUND);
+				throw new Error(ERRORS.ASSET_NOT_FOUND);
 			}
 
 			let drugObject = Utils.bufferToJson(drugObjectBuffer);
@@ -269,7 +269,7 @@ class CommonContract extends Contract {
 			}
 			return;
 		}
-		throw new Error(MESSAGES.TRANSPORTER_IS_NOT_REGISTERED);
+		throw new Error(ERRORS.TRANSPORTER_IS_NOT_REGISTERED);
 	}
 }
 

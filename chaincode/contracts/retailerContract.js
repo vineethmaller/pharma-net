@@ -3,7 +3,7 @@
 const { Contract } = require('fabric-contract-api');
 const { Auth } = require('../helpers/auth');
 const { Utils } = require('../helpers/utils');
-const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS } = require('../constants');
+const { COMPOSITE_KEY_PREFIXES, ERRORS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.retailercontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Retailer Smart Contract Instantiated';
@@ -55,11 +55,11 @@ class RetailerContract extends Contract {
 
 						return productObject;
 					}
-					throw new Error(MESSAGES.RETAILER_DOES_NOT_MATCH);
+					throw new Error(ERRORS.RETAILER_DOES_NOT_MATCH);
 				}
-				throw new Error(MESSAGES.PRODUCT_NOT_FOUND);
+				throw new Error(ERRORS.PRODUCT_NOT_FOUND);
 			}
-			throw new Error(MESSAGES.RETAILER_IS_NOT_REGISTERED);
+			throw new Error(ERRORS.RETAILER_IS_NOT_REGISTERED);
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}

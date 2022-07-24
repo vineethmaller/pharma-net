@@ -1,7 +1,7 @@
 'use strict';
 
 const { Utils } = require('./utils');
-const { COMPOSITE_KEY_PREFIXES, MESSAGES, HIERARCHY_LEVELS } = require('../constants');
+const { HIERARCHY_LEVELS } = require('../constants');
 
 class Common {
 

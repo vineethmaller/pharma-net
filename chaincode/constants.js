@@ -24,17 +24,7 @@ const ERRORS = {
     ROLE_AUTHORIZATION_ERROR : 'You do not have the authorization to perform this operation',
     USER_VALIDATION_ERROR : 'User ID mismatch',
     ORGANIZATION_ROLE_NOT_FOUND : 'Organization role provided is not found',
-    ORGANIZATION_ROLE_DOES_NOT_MATCH_MSP_ID : 'Organization role provided does not match the entity\'s network role'
-};
-
-const COMPOSITE_KEY_PREFIXES = {
-    COMPANY : 'org.pharma-network.pharmanet.company',
-    PRODUCT : 'org.pharma-network.pharmanet.product',
-    PURCHASE_ORDER : 'org.pharma-network.pharmanet.purchaseorder',
-    SHIPMENT : 'org.pharma-network.pharmanet.shipment'
-};
-
-const MESSAGES = {
+    ORGANIZATION_ROLE_DOES_NOT_MATCH_MSP_ID : 'Organization role provided does not match the entity\'s network role',
     COMPANY_ALREADY_REGISTERED : 'The company is already registered in the network',
     COMPANY_IS_NOT_REGISTERED : 'The company is not registered in the network',
     BUYER_IS_NOT_REGISTERED : 'The buyer is not registered in the network',
@@ -55,11 +45,17 @@ const MESSAGES = {
     INCORRECT_ITEM_COUNT_IN_SHIPMENT : 'The quantity requested in purchase order does not match the count of items being shipped'
 };
 
+const COMPOSITE_KEY_PREFIXES = {
+    COMPANY : 'org.pharma-network.pharmanet.company',
+    PRODUCT : 'org.pharma-network.pharmanet.product',
+    PURCHASE_ORDER : 'org.pharma-network.pharmanet.purchaseorder',
+    SHIPMENT : 'org.pharma-network.pharmanet.shipment'
+};
+
 module.exports = {
     SHIPMENT_STATUS, 
     HIERARCHY_LEVELS,
     ROLES,
     ERRORS,
-    COMPOSITE_KEY_PREFIXES,
-    MESSAGES 
+    COMPOSITE_KEY_PREFIXES
 };

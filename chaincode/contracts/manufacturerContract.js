@@ -4,7 +4,7 @@ const { Contract } = require('fabric-contract-api');
 const { Auth } = require('../helpers/auth');
 const { Utils } = require('../helpers/utils');
 const { Common } = require('../helpers/common');
-const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS } = require('../constants');
+const { COMPOSITE_KEY_PREFIXES, ERRORS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.manufacturercontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Manufacturer Smart Contract Instantiated';
@@ -51,12 +51,12 @@ class ManufacturerContract extends Contract {
 
 					let manufacturedDateObject = new Date(manufacturedDate);
 					if(!isValidManufacturedDate(manufacturedDateObject)) {
-						return MESSAGES.INVALID_MANUFACTURED_DATE;
+						return ERRORS.INVALID_MANUFACTURED_DATE;
 					}
 
 					let expiryDateObject = new Date(expiryDate);
 					if(!isValidExpiryDate(expiryDateObject)) {
-						return MESSAGES.INVALID_EXPIRY_DATE;
+						return ERRORS.INVALID_EXPIRY_DATE;
 					}
 
 					let productID = ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.PRODUCT, [drugName, serialNo]);
@@ -75,9 +75,9 @@ class ManufacturerContract extends Contract {
 
 					return newDrugObject;
 				}
-				throw new Error(MESSAGES.SERIAL_NO_IS_ALREADY_USED);
+				throw new Error(ERRORS.SERIAL_NO_IS_ALREADY_USED);
 			}
-			throw new Error(MESSAGES.COMPANY_IS_NOT_REGISTERED);
+			throw new Error(ERRORS.COMPANY_IS_NOT_REGISTERED);
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}

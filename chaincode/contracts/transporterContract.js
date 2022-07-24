@@ -3,8 +3,7 @@
 const { Contract } = require('fabric-contract-api');
 const { Auth } = require('../helpers/auth');
 const { Utils } = require('../helpers/utils');
-const { Common } = require('../helpers/common');
-const { SHIPMENT_STATUS, COMPOSITE_KEY_PREFIXES, ERRORS, MESSAGES } = require('../constants');
+const { SHIPMENT_STATUS, COMPOSITE_KEY_PREFIXES, ERRORS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.transportercontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Transporter Smart Contract Instantiated';
@@ -70,13 +69,13 @@ class TransporterContract extends Contract {
 							
 							return shipmentObject;
 						}
-						throw new Error(MESSAGES.TRANSPORTER_DOES_NOT_MATCH);
+						throw new Error(ERRORS.TRANSPORTER_DOES_NOT_MATCH);
 					}
-					throw new Error(MESSAGES.TRANSPORTER_IS_NOT_REGISTERED);
+					throw new Error(ERRORS.TRANSPORTER_IS_NOT_REGISTERED);
 				}
-				throw new Error(MESSAGES.SHIPMENT_NOT_FOUND);
+				throw new Error(ERRORS.SHIPMENT_NOT_FOUND);
 			}
-			throw new Error(MESSAGES.BUYER_IS_NOT_REGISTERED);
+			throw new Error(ERRORS.BUYER_IS_NOT_REGISTERED);
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
@@ -88,7 +87,7 @@ class TransporterContract extends Contract {
 	 * @param {*} buyerID 
 	 * @param {*} shipmentID 
 	 */
-	 async updateDrugStateForShipmentDelivery(ctx, drugObjectsArray, buyerID, shipmentID) {
+	async updateDrugStateForShipmentDelivery(ctx, drugObjectsArray, buyerID, shipmentID) {
 		for(let drugObject in drugObjectsArray) {
 			let productID = drugObject.productID;
 			drugObject.owner = buyerID;
@@ -104,13 +103,13 @@ class TransporterContract extends Contract {
 	 * @param {*} listOfAssets 
 	 * @returns 
 	 */
-	 async fetchDrugsByIDs(ctx, listOfAssets) {
+	async fetchDrugsByIDs(ctx, listOfAssets) {
 		let drugList = [];
 		for(let asset in listOfAssets) {
 			let drugObjectBuffer = ctx.stub.getState(asset);
 
 			if(drugObjectBuffer === 0) {
-				return MESSAGES.ASSET_NOT_FOUND;
+				return ERRORS.ASSET_NOT_FOUND;
 			}
 
 			let drugObject = Utils.bufferToJson(drugObjectBuffer);
