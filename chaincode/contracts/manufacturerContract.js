@@ -83,4 +83,4 @@ class ManufacturerContract extends Contract {
 	}
 }
 
-module.exports = { ManufacturerContract };
+module.exports = ManufacturerContract;

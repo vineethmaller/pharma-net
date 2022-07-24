@@ -16,7 +16,8 @@ class RetailerContract extends Contract {
 	}
 	
 	/**
-	 * @param ctx
+	 * 
+	 * @param {*} _ctx 
 	 */
 	async instantiate(_ctx) {
 		console.log(CONTRACT_INSTANTIATE_MESSAGE);
@@ -65,4 +66,4 @@ class RetailerContract extends Contract {
 	}
 }
 
-module.exports = { RetailerContract };
+module.exports = RetailerContract;

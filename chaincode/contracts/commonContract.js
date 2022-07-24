@@ -273,4 +273,4 @@ class CommonContract extends Contract {
 	}
 }
 
-module.exports = { CommonContract };
+module.exports = CommonContract;
