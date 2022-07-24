@@ -26,10 +26,10 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.manufacturer.pharma-network.com
       - FABRIC_CA_SERVER_TLS_ENABLED=false
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.manufacturer.pharma-network.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/89e6519242c3a0a5e5dc363dd1a4886d9e720b2180d9d42d921b29dcbf49f618_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/63f41d1197845ef55ff141615b92179431c5da63b03403631d7899ff1b5ba523_sk
     ports:
       - "7054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.manufacturer.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/89e6519242c3a0a5e5dc363dd1a4886d9e720b2180d9d42d921b29dcbf49f618_sk
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.manufacturer.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/63f41d1197845ef55ff141615b92179431c5da63b03403631d7899ff1b5ba523_sk
     volumes:
       - ./crypto-config/peerOrganizations/manufacturer.pharma-network.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.manufacturer.pharma-network.com
@@ -43,10 +43,10 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.distributor.pharma-network.com
       - FABRIC_CA_SERVER_TLS_ENABLED=false
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.distributor.pharma-network.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/5c0a9fe3152b0712481d6b987f42197fba1a176a18f9595b1ed4a966ef9bb817_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/19a0e196e33ee71d590391ce6f3292843a0bbf961500546ceb48eea037290c79_sk
     ports:
       - "8054:8054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.distributor.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/5c0a9fe3152b0712481d6b987f42197fba1a176a18f9595b1ed4a966ef9bb817_sk
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.distributor.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/19a0e196e33ee71d590391ce6f3292843a0bbf961500546ceb48eea037290c79_sk
     volumes:
       - ./crypto-config/peerOrganizations/distributor.pharma-network.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.distributor.pharma-network.com
@@ -60,10 +60,10 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.retailer.pharma-network.com
       - FABRIC_CA_SERVER_TLS_ENABLED=false
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.retailer.pharma-network.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/92d2c85dbfdd56aecb50651b43d772ff7806eeafd095eef241a8068c40c421e2_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/b3cac93d69394369d5ebf657a914079ac6ca5f5bfe2eb67416465a3a55cd04a4_sk
     ports:
       - "9054:9054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.retailer.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/92d2c85dbfdd56aecb50651b43d772ff7806eeafd095eef241a8068c40c421e2_sk
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.retailer.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/b3cac93d69394369d5ebf657a914079ac6ca5f5bfe2eb67416465a3a55cd04a4_sk
     volumes:
       - ./crypto-config/peerOrganizations/retailer.pharma-network.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.retailer.pharma-network.com
@@ -77,10 +77,10 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.consumer.pharma-network.com
       - FABRIC_CA_SERVER_TLS_ENABLED=false
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.consumer.pharma-network.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/c11dc185dc6e2ee047ade2a1a8418ca9c30b647ae11b655e26b014f539f94ee6_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/fd97b6b192333a8706911746ff14fa3db59ff5db69ee6da7ca7883882a595e1c_sk
     ports:
       - "10054:10054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.consumer.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/c11dc185dc6e2ee047ade2a1a8418ca9c30b647ae11b655e26b014f539f94ee6_sk
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.consumer.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/fd97b6b192333a8706911746ff14fa3db59ff5db69ee6da7ca7883882a595e1c_sk
     volumes:
       - ./crypto-config/peerOrganizations/consumer.pharma-network.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.consumer.pharma-network.com
@@ -94,10 +94,10 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.transporter.pharma-network.com
       - FABRIC_CA_SERVER_TLS_ENABLED=false
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.transporter.pharma-network.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/303aa0daddf5cda50184d5dc71be8d79a18572fc4fecda6d79c688d548fa8eee_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7ab66af41b64fad3cf3ccaf8bf1e462ae592da2e30bd0cf7c16b7c2163c9867b_sk
     ports:
       - "11054:11054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.transporter.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/303aa0daddf5cda50184d5dc71be8d79a18572fc4fecda6d79c688d548fa8eee_sk
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d' # --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.transporter.pharma-network.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/7ab66af41b64fad3cf3ccaf8bf1e462ae592da2e30bd0cf7c16b7c2163c9867b_sk
     volumes:
       - ./crypto-config/peerOrganizations/transporter.pharma-network.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.transporter.pharma-network.com
