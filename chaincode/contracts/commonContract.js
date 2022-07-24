@@ -155,35 +155,29 @@ class CommonContract extends Contract {
 
 					let purchaseOrderObject = Utils.bufferToJson(purchaseOrderObjectBuffer);
 
-					response = Common.validateAndFetchDrugs(ctx, listOfAssets, purchaseOrderObject.quantity);
+					//Checks if the quantity requested in purchase order matches the count of items being shipped
+					if(listOfAssets.length === purchaseOrderObject.quantity) {
 
-					//Checks if the shipment items are valid 
-					if(typeof response !== 'string') {
-
-						let drugObjectsArray = response;
+						let drugObjectsArray = await fetchDrugsByIDs(ctx, listOfAssets);
 						let sellerID = drugObjectsArray[0].owner;
 						
-						response = Common.updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterCRN);
+						await updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterCRN);
 
-						//Checks if the shipment items have been updated successfully
-						if(typeof response !== 'string') {
+						let shipmentID = ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.SHIPMENT, [buyerCRN, drugName]);
 
-							let shipmentID = ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.SHIPMENT, [buyerCRN, drugName]);
-
-							let newShipmentObject = {
-								shipmentID : shipmentID,
-								creator : sellerID,
-								assets : listOfAssets,
-								transporter : transporterCRN,
-								status : SHIPMENT_STATUS.IN_TRANSIT
-							}
-
-							await ctx.stub.putState(shipmentID, Utils.jsonToBuffer(newShipmentObject));
-							
-							return newShipmentObject;
+						let newShipmentObject = {
+							shipmentID : shipmentID,
+							creator : sellerID,
+							assets : listOfAssets,
+							transporter : transporterCRN,
+							status : SHIPMENT_STATUS.IN_TRANSIT
 						}
+
+						await ctx.stub.putState(shipmentID, Utils.jsonToBuffer(newShipmentObject));
+							
+						return newShipmentObject;
 					} 
-					return response;
+					throw new Error(INCORRECT_ITEM_COUNT_IN_SHIPMENT);
 				}
 				throw new Error(MESSAGES.PURCHASE_ORDER_NOT_FOUND);
 			}
@@ -231,6 +225,51 @@ class CommonContract extends Contract {
 			return Utils.bufferToJson(productObjectBuffer);
 		}
 		throw new Error(MESSAGES.ASSET_NOT_FOUND);
+	}
+
+	/**
+	 * 
+	 * @param {*} ctx 
+	 * @param {*} listOfAssets 
+	 * @returns 
+	 */
+	async fetchDrugsByIDs(ctx, listOfAssets) {
+		let drugList = [];
+		for(let asset in listOfAssets) {
+			let drugObjectBuffer = ctx.stub.getState(asset);
+
+			if(drugObjectBuffer === 0) {
+				throw new Error(MESSAGES.ASSET_NOT_FOUND);
+			}
+
+			let drugObject = Utils.bufferToJson(drugObjectBuffer);
+			drugList.push(drugObject);
+		}
+		return drugList;
+	}	
+
+	/**
+	 * 
+	 * @param {*} ctx 
+	 * @param {*} drugObjectsArray 
+	 * @param {*} transporterCRN 
+	 * @returns 
+	 */
+	static updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterCRN) {
+		let response = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [transporterCRN]);
+	
+		if(!response.done) {
+			let transporterID = response.next();
+			
+			for(let drugObject in drugObjectsArray) {
+				let productID = drugObject.productID;
+				drugObject.owner = transporterID;
+	
+				await ctx.stub.putState(productID, Utils.jsonToBuffer(drugObject));
+			}
+			return;
+		}
+		throw new Error(MESSAGES.TRANSPORTER_IS_NOT_REGISTERED);
 	}
 }
 

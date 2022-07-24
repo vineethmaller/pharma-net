@@ -51,7 +51,8 @@ const MESSAGES = {
     PURCHASE_ORDER_NOT_FOUND : 'Purchase order not found for this shipment',
     SHIPMENT_NOT_FOUND : 'Shipment is not found in the database',
     TRANSPORTER_DOES_NOT_MATCH : 'This transporter not assigned to the shipment',
-    RETAILER_DOES_NOT_MATCH : 'This retailer does not own the product'
+    RETAILER_DOES_NOT_MATCH : 'This retailer does not own the product',
+    INCORRECT_ITEM_COUNT_IN_SHIPMENT : 'The quantity requested in purchase order does not match the count of items being shipped'
 };
 
 module.exports = {

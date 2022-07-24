@@ -58,10 +58,10 @@ class TransporterContract extends Contract {
 						//Checks if the transporter matches with the shipment
 						if(shipmentObject.transporter === transporterID) {
 
-							let drugList = Common.fetchDrugsByIDs(ctx, assetList);
+							let drugList = await fetchDrugsByIDs(ctx, assetList);
 
 							//Update state of items in shipment
-							await Common.updateDrugStateForShipmentDelivery(ctx, drugList, buyerID, shipmentID);
+							await updateDrugStateForShipmentDelivery(ctx, drugList, buyerID, shipmentID);
 
 							//Update shipment status as delivered
 							shipmentObject.status = SHIPMENT_STATUS.DELIVERED;
@@ -79,6 +79,44 @@ class TransporterContract extends Contract {
 			throw new Error(MESSAGES.BUYER_IS_NOT_REGISTERED);
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
+	}
+
+	/**
+	 * 
+	 * @param {*} ctx 
+	 * @param {*} drugObjectsArray 
+	 * @param {*} buyerID 
+	 * @param {*} shipmentID 
+	 */
+	 async updateDrugStateForShipmentDelivery(ctx, drugObjectsArray, buyerID, shipmentID) {
+		for(let drugObject in drugObjectsArray) {
+			let productID = drugObject.productID;
+			drugObject.owner = buyerID;
+			drugObject.shipment.push(shipmentID);
+
+			await ctx.stub.putState(productID, Utils.jsonToBuffer(drugObject));
+		}
+	}
+
+	/**
+	 * 
+	 * @param {*} ctx 
+	 * @param {*} listOfAssets 
+	 * @returns 
+	 */
+	 async fetchDrugsByIDs(ctx, listOfAssets) {
+		let drugList = [];
+		for(let asset in listOfAssets) {
+			let drugObjectBuffer = ctx.stub.getState(asset);
+
+			if(drugObjectBuffer === 0) {
+				return MESSAGES.ASSET_NOT_FOUND;
+			}
+
+			let drugObject = Utils.bufferToJson(drugObjectBuffer);
+			drugList.push(drugObject);
+		}
+		return drugList;
 	}
 }
 
