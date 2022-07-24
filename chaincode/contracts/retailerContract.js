@@ -1,9 +1,9 @@
 'use strict';
 
 const { Contract } = require('fabric-contract-api');
-const { Auth } = require('./auth');
-const { Utils } = require('./utils');
-const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS } = require('./constants');
+const { Auth } = require('../helpers/auth');
+const { Utils } = require('../helpers/utils');
+const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.retailercontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Retailer Smart Contract Instantiated';

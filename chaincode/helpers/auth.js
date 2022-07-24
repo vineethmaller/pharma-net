@@ -1,6 +1,6 @@
 'use strict';
 
-const { ROLES, ERRORS } = require('./constants');
+const { ROLES, ERRORS } = require('../constants');
 
 class Auth {
 

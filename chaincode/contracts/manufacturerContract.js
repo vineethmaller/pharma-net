@@ -1,9 +1,10 @@
 'use strict';
 
 const { Contract } = require('fabric-contract-api');
-const { Auth } = require('./auth');
-const { Utils } = require('./utils');
-const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS } = require('./constants');
+const { Auth } = require('../helpers/auth');
+const { Utils } = require('../helpers/utils');
+const { Common } = require('../helpers/common');
+const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.manufacturercontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Manufacturer Smart Contract Instantiated';
@@ -79,16 +80,6 @@ class ManufacturerContract extends Contract {
 			return MESSAGES.COMPANY_IS_NOT_REGISTERED;
 		}
 		return ERRORS.ROLE_AUTHORIZATION_ERROR;
-	}
-
-	static isValidManufacturedDate(manufacturedDate) {
-		let currentDate = new Date();
-		return manufacturedDate <= currentDate;
-	}
-
-	static isValidExpiryDate(expiryDate) {
-		let currentDate = new Date();
-		return expiryDate >= currentDate;
 	}
 }
 

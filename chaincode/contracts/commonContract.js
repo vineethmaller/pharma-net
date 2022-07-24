@@ -1,10 +1,10 @@
 'use strict';
 
 const { Contract } = require('fabric-contract-api');
-const { Auth } = require('./auth');
-const { Utils } = require('./utils');
-const { Common } = require('./common');
-const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS, ROLES, HIERARCHY_LEVELS, SHIPMENT_STATUS } = require('./constants');
+const { Auth } = require('../helpers/auth');
+const { Utils } = require('../helpers/utils');
+const { Common } = require('../helpers/common');
+const { COMPOSITE_KEY_PREFIXES, MESSAGES, ERRORS, ROLES, SHIPMENT_STATUS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.commoncontract';
 const CONTRACT_INSTANTIATE_MESSAGE = 'Pharmanet Common Smart Contract Instantiated';

@@ -30,7 +30,7 @@ const ERRORS = {
 const COMPOSITE_KEY_PREFIXES = {
     COMPANY : 'org.pharma-network.pharmanet.company',
     PRODUCT : 'org.pharma-network.pharmanet.product',
-    PURCHASE_ORDER : 'org.pharma-network.pharmanet.purchaseOrder',
+    PURCHASE_ORDER : 'org.pharma-network.pharmanet.purchaseorder',
     SHIPMENT : 'org.pharma-network.pharmanet.shipment'
 };
 
