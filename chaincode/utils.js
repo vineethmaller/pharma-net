@@ -1,5 +1,8 @@
 'use strict';
 
+const { ROLES } = require('./constants');
+
+
 class Utils {
 
 	/**
