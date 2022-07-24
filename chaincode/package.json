@@ -1,6 +1,6 @@
 {
     "name": "pharma-network",
-    "version": "0.0.2",
+    "version": "1.0.0",
     "description": "Pharma Network",
     "main": "index.js",
     "engines": {
@@ -11,7 +11,7 @@
       "lint": "eslint .",
       "pretest": "npm run lint",
       "test": "nyc mocha test --recursive",
-      "start-dev": "fabric-chaincode-node start --peer.address peer0.registrar.pharma-network.com:7053 --chaincode-id-name pharmanet:1.15",
+      "start-dev": "fabric-chaincode-node start --peer.address peer0.manufacturer.pharma-network.com:7053 --chaincode-id-name pharmanet:1.0",
       "start": "fabric-chaincode-node start",
       "mocha": "mocha test --recursive"
     },
