@@ -4,6 +4,10 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const { FileSystemWallet, Gateway } = require('fabric-network');
 
+const { PHARMA_NETWORK, CREDENTIALS } = require('../constants');
+
+const UTF_8 = 'utf-8';
+
 let gateway;
 
 async function getContractInstance(contractType, organizationRole) {
@@ -27,8 +31,8 @@ async function getContractInstance(contractType, organizationRole) {
     await gateway.connect(profile.connectionProfile, connectionObject);
     console.log('Connected to network');
 
-    console.log('Connecting to channel: pharmachannel');
-    const channel = await gateway.getNetwork('pharmachannel');
+    console.log('Connecting to channel: ${PHARMA_NETWORK.CHANNEL}');
+    const channel = await gateway.getNetwork(PHARMA_NETWORK.CHANNEL);
     console.log('Connected to channel');
 
     console.log('Connecting to smart contract: ${smartContractName}');
@@ -47,24 +51,24 @@ function getProfileByContractType(contractType) {
     let result;
 
     switch(contractType) {
-        case 'common' : result = {
-            smartContractName : 'pharmanet.commoncontract',
-            connectionProfileFile : fs.readFileSync('../connection-profiles/common.yml', 'utf-8'),
+        case PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.TYPE : result = {
+            smartContractName : PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.NAME,
+            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
             connectionProfile : yaml.safeLoad(connectionProfileFile)
         }; break;
-        case 'manufacturer' : result = {
-            smartContractName : 'pharmanet.manufacturercontract',
-            connectionProfileFile : fs.readFileSync('../connection-profiles/manufacturer.yml', 'utf-8'),
+        case PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.TYPE : result = {
+            smartContractName : PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.NAME,
+            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
             connectionProfile : yaml.safeLoad(connectionProfileFile),
         }; break;
-        case 'retailer' : result = {
-            smartContractName : 'pharmanet.retailercontract',
-            connectionProfileFile : fs.readFileSync('../connection-profiles/retailer.yml', 'utf-8'),
+        case PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.TYPE : result = {
+            smartContractName : PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.NAME,
+            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
             connectionProfile : yaml.safeLoad(connectionProfileFile),
         }; break;
-        case 'transporter' : result = {
-            smartContractName : 'pharmanet.transportercontract',
-            connectionProfileFile : fs.readFileSync('../connection-profiles/transporter.yml', 'utf-8'),
+        case PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.TYPE : result = {
+            smartContractName : PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.NAME,
+            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
             connectionProfile : yaml.safeLoad(connectionProfileFile),
         }; break;
         default : {
@@ -79,25 +83,25 @@ function getWalletCredsByOrganizationRole(organizationRole) {
     let result;
 
     switch(organizationRole) {
-        case 'manufacturer' : result = {
-            wallet : new FileSystemWallet('../wallets/identity/manufacturer'),
-            userName : 'MANUFACTURER_ADMIN'
+        case CREDENTIALS.MANUFACTURER.ROLE : result = {
+            wallet : new FileSystemWallet('../' + CREDENTIALS.MANUFACTURER.WALLET_PATH),
+            userName : CREDENTIALS.MANUFACTURER.ADMIN.IDENTITY_LABEL
         }; break;
-        case 'distributor' : result = {
-            wallet : new FileSystemWallet('../wallets/identity/distributor'),
-            userName : 'DISTRIBUTOR_ADMIN'
+        case CREDENTIALS.DISTRIBUTOR.ROLE : result = {
+            wallet : new FileSystemWallet('../' + CREDENTIALS.DISTRIBUTOR.WALLET_PATH),
+            userName : CREDENTIALS.DISTRIBUTOR.ADMIN.IDENTITY_LABEL
         }; break;
-        case 'retailer' : result = {
-            wallet : new FileSystemWallet('../wallets/identity/retailer'),
-            userName : 'RETAILER_ADMIN'
+        case CREDENTIALS.RETAILER.ROLE : result = {
+            wallet : new FileSystemWallet('../' + CREDENTIALS.RETAILER.WALLET_PATH),
+            userName : CREDENTIALS.RETAILER.ADMIN.IDENTITY_LABEL
         }; break;
-        case 'consumer' : result = {
-            wallet : new FileSystemWallet('../wallets/identity/consumer'),
-            userName : 'CONSUMER_ADMIN'
+        case CREDENTIALS.CONSUMER.ROLE : result = {
+            wallet : new FileSystemWallet('../' + CREDENTIALS.CONSUMER.WALLET_PATH),
+            userName : CREDENTIALS.CONSUMER.ADMIN.IDENTITY_LABEL
         }; break;
-        case 'transporter' : result = {
-            wallet : new FileSystemWallet('../wallets/identity/transporter'),
-            userName : 'TRANSPORTER_ADMIN'
+        case CREDENTIALS.TRANSPORTER.ROLE : result = {
+            wallet : new FileSystemWallet('../' + CREDENTIALS.TRANSPORTER.WALLET_PATH),
+            userName : CREDENTIALS.TRANSPORTER.ADMIN.IDENTITY_LABEL
         }; break;
         default : {
             throw new Error('Invalid organization role provided');

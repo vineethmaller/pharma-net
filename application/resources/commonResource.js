@@ -26,7 +26,7 @@ router.post('/registerCompany', (req, res) => {
 });
 
 router.post('/createPO', (req, res) => {
-    commonContractApi.createPurchaseOrder(req.body.buyerCRN, req.body.sellerCRN, req.body.drugName, req.body.quantity)
+    commonContractApi.createPurchaseOrder(req.body.buyerCRN, req.body.sellerCRN, req.body.drugName, req.body.quantity, req.headers.organizationRole)
     .then((result) => {
         const responseBody = {
             status : 'success',
@@ -46,7 +46,7 @@ router.post('/createPO', (req, res) => {
 });
 
 router.post('/createShipment', (req, res) => {
-    commonContractApi.createShipment(req.body.buyerCRN, req.body.drugName, req.body.assets, req.body.transporterCRN)
+    commonContractApi.createShipment(req.body.buyerCRN, req.body.drugName, req.body.assets, req.body.transporterCRN, req.headers.organizationRole)
     .then((result) => {
         const responseBody = {
             status : 'success',
@@ -66,7 +66,7 @@ router.post('/createShipment', (req, res) => {
 });
 
 router.post('/view/drug', (req, res) => {
-    commonContractApi.viewDrugState(req.drugName, req.body.serialNo)
+    commonContractApi.viewDrugState(req.drugName, req.body.serialNo, req.headers.organizationRole)
     .then((result) => {
         const responseBody = {
             status : 'success',
@@ -86,7 +86,7 @@ router.post('/view/drug', (req, res) => {
 });
 
 router.post('/view/history', (req, res) => {
-    commonContractApi.viewHistory(req.body.drugName, req.body.serialNo)
+    commonContractApi.viewHistory(req.body.drugName, req.body.serialNo, req.headers.organizationRole)
     .then((result) => {
         const responseBody = {
             status : 'success',

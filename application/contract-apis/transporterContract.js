@@ -1,20 +1,17 @@
 'use strict';
 
 const contractHelper = require('../helpers/contractHelper');
+const { PHARMA_NETWORK } = require('../constants');
 
-const FUNCTIONS = {
-    UPDATE_SHIPMENT : 'updateShipment'
-};
-
-const CONTRACT_TYPE = 'transporter';
+const CONTRACT = PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT;
 
 async function updateShipment(buyerCRN, drugName, transporterCRN, organizationRole) {
     try {
-        const contract = await contractHelper.getContractInstance(CONTRACT_TYPE, organizationRole);
+        const contract = await contractHelper.getContractInstance(CONTRACT.TYPE, organizationRole);
         console.log('Connected to smart contract');
 
         console.log('Submitting transaction for updating shipment status');
-        const shipmentObjectBuffer = await contract.submitTransaction(FUNCTIONS.UPDATE_SHIPMENT, buyerCRN, drugName, transporterCRN);
+        const shipmentObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.UPDATE_SHIPMENT, buyerCRN, drugName, transporterCRN);
 
         comnsole.log('Response received from network. Parsing...');
         let shipmentObject = JSON.parse(shipmentObjectBuffer.toString());

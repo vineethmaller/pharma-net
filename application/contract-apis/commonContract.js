@@ -1,24 +1,17 @@
 'use strict';
 
 const contractHelper = require('../helpers/contractHelper');
+const { PHARMA_NETWORK } = require('../constants');
 
-const FUNCTIONS = {
-    REGISTER_COMPANY : 'registerCompany',
-    CREATE_PURCHASE_ORDER : 'createPO',
-    CREATE_SHIPMENT : 'createShipment',
-    VIEW_HISTORY : 'viewHistory',
-    VIEW_DRUG_STATE : 'viewDrugCurrentState'
-};
-
-const CONTRACT_TYPE = 'common';
+const CONTRACT = PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT;
 
 async function registerCompany(companyCRN, companyName, location, organizationRole) {
     try {
-        const contract = await contractHelper.getContractInstance(CONTRACT_TYPE, organizationRole);
+        const contract = await contractHelper.getContractInstance(CONTRACT.TYPE, organizationRole);
         console.log('Connected to smart contract');
 
         console.log('Submitting transaction for registering company in network');
-        const companyObjectBuffer = await contract.submitTransaction(FUNCTIONS.REGISTER_COMPANY, companyCRN, companyName, location, organizationRole);
+        const companyObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.REGISTER_COMPANY, companyCRN, companyName, location, organizationRole);
 
         comnsole.log('Response received from network. Parsing...');
         let companyObject = JSON.parse(companyObjectBuffer.toString());
@@ -36,11 +29,11 @@ async function registerCompany(companyCRN, companyName, location, organizationRo
 
 async function createPurchaseOrder(buyerCRN, sellerCRN, drugName, quantity, organizationRole) {
     try {
-        const contract = await contractHelper.getContractInstance(CONTRACT_TYPE, organizationRole);
+        const contract = await contractHelper.getContractInstance(CONTRACT.TYPE, organizationRole);
         console.log('Connected to smart contract');
 
         console.log('Submitting transaction for creating purchase order');
-        const purchaseOrderObjectBuffer = await contract.submitTransaction(FUNCTIONS.CREATE_PURCHASE_ORDER, buyerCRN, sellerCRN, drugName, quantity);
+        const purchaseOrderObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.CREATE_PURCHASE_ORDER, buyerCRN, sellerCRN, drugName, quantity);
 
         comnsole.log('Response received from network. Parsing...');
         let purchaseOrderObject = JSON.parse(purchaseOrderObjectBuffer.toString());
@@ -58,11 +51,11 @@ async function createPurchaseOrder(buyerCRN, sellerCRN, drugName, quantity, orga
 
 async function createShipment(buyerCRN, drugName, listOfAssets, transporterCRN, organizationRole) {
     try {
-        const contract = await contractHelper.getContractInstance(CONTRACT_TYPE, organizationRole);
+        const contract = await contractHelper.getContractInstance(CONTRACT.TYPE, organizationRole);
         console.log('Connected to smart contract');
 
         console.log('Submitting transaction for creating shipment');
-        const shipmentObjectBuffer = await contract.submitTransaction(FUNCTIONS.CREATE_SHIPMENT, buyerCRN, drugName, listOfAssets, transporterCRN);
+        const shipmentObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.CREATE_SHIPMENT, buyerCRN, drugName, listOfAssets, transporterCRN);
 
         comnsole.log('Response received from network. Parsing...');
         let shipmentObject = JSON.parse(shipmentObjectBuffer.toString());
@@ -80,11 +73,11 @@ async function createShipment(buyerCRN, drugName, listOfAssets, transporterCRN, 
 
 async function viewHistory(drugName, serialNo, organizationRole) {
     try {
-        const contract = await contractHelper.getContractInstance(CONTRACT_TYPE, organizationRole);
+        const contract = await contractHelper.getContractInstance(CONTRACT.TYPE, organizationRole);
         console.log('Connected to smart contract');
 
         console.log('Submitting transaction for retrieving history of drug');
-        const drugHistoryObjectBuffer = await contract.submitTransaction(FUNCTIONS.VIEW_HISTORY, drugName, serialNo);
+        const drugHistoryObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.VIEW_HISTORY, drugName, serialNo);
 
         comnsole.log('Response received from network. Parsing...');
         let drugHistoryObject = JSON.parse(drugHistoryObjectBuffer.toString());
@@ -102,17 +95,17 @@ async function viewHistory(drugName, serialNo, organizationRole) {
 
 async function viewDrugState(drugName, serialNo, organizationRole) {
     try {
-        const contract = await contractHelper.getContractInstance(CONTRACT_TYPE, organizationRole);
+        const contract = await contractHelper.getContractInstance(CONTRACT.TYPE, organizationRole);
         console.log('Connected to smart contract');
 
         console.log('Submitting transaction for retrieving current state of drug');
-        const drugHistoryObjectBuffer = await contract.submitTransaction(FUNCTIONS.VIEW_DRUG_STATE, drugName, serialNo);
+        const drugObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.VIEW_DRUG_STATE, drugName, serialNo);
 
         comnsole.log('Response received from network. Parsing...');
-        let drugHistoryObject = JSON.parse(drugHistoryObjectBuffer.toString());
+        let drugObject = JSON.parse(drugObjectBuffer.toString());
         
         console.log('Current state of drug is retrieved');
-        return drugHistoryObject;
+        return drugObject;
     } catch(error) {
         console.log('Error: ${error}');
         throw new Error(error);
