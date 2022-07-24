@@ -160,24 +160,31 @@ class CommonContract extends Contract {
 
 						let drugObjectsArray = await fetchDrugsByIDs(ctx, listOfAssets);
 						let sellerID = drugObjectsArray[0].owner;
+
+						response = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [transporterCRN]);
+	
+						if(!response.done) {
+							let transporterID = response.next();
 						
-						await updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterCRN);
+							await updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterID);
 
-						let shipmentID = ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.SHIPMENT, [buyerCRN, drugName]);
+							let shipmentID = ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.SHIPMENT, [buyerCRN, drugName]);
 
-						let newShipmentObject = {
-							shipmentID : shipmentID,
-							creator : sellerID,
-							assets : listOfAssets,
-							transporter : transporterCRN,
-							status : SHIPMENT_STATUS.IN_TRANSIT
-						}
+							let newShipmentObject = {
+								shipmentID : shipmentID,
+								creator : sellerID,
+								assets : listOfAssets,
+								transporter : transporterID,
+								status : SHIPMENT_STATUS.IN_TRANSIT
+							}
 
-						await ctx.stub.putState(shipmentID, Utils.jsonToBuffer(newShipmentObject));
+							await ctx.stub.putState(shipmentID, Utils.jsonToBuffer(newShipmentObject));
 							
-						return newShipmentObject;
+							return newShipmentObject;
+						}
+						throw new Error(ERRORS.TRANSPORTER_IS_NOT_REGISTERED);
 					} 
-					throw new Error(INCORRECT_ITEM_COUNT_IN_SHIPMENT);
+					throw new Error(ERRORS.INCORRECT_ITEM_COUNT_IN_SHIPMENT);
 				}
 				throw new Error(ERRORS.PURCHASE_ORDER_NOT_FOUND);
 			}
@@ -255,21 +262,14 @@ class CommonContract extends Contract {
 	 * @param {*} transporterCRN 
 	 * @returns 
 	 */
-	static updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterCRN) {
-		let response = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [transporterCRN]);
-	
-		if(!response.done) {
-			let transporterID = response.next();
+	async updateDrugStateForShipmentCreation(ctx, drugObjectsArray, transporterID) {
 			
-			for(let drugObject in drugObjectsArray) {
-				let productID = drugObject.productID;
-				drugObject.owner = transporterID;
+		for(let drugObject in drugObjectsArray) {
+			let productID = drugObject.productID;
+			drugObject.owner = transporterID;
 	
-				await ctx.stub.putState(productID, Utils.jsonToBuffer(drugObject));
-			}
-			return;
-		}
-		throw new Error(ERRORS.TRANSPORTER_IS_NOT_REGISTERED);
+			await ctx.stub.putState(productID, Utils.jsonToBuffer(drugObject));
+		}	
 	}
 }
 
