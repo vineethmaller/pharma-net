@@ -3,3 +3,4 @@ chaincode/node_modules/
 node_modules/
 
 application/*.log.*
+**/package-lock.json
