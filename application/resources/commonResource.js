@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const commonContractApi = require('./contract-apis/commonContract');
+const commonContractApi = require('../contract-apis/commonContract');
 
 router.post('/registerCompany', (req, res) => {
     commonContractApi.registerCompany(req.body.companyCRN, req.body.companyName, req.body.location, req.body.organizationRole)
@@ -105,4 +105,4 @@ router.post('/view/history', (req, res) => {
     });
 });
 
-module.exports.router = router;
+module.exports = router;

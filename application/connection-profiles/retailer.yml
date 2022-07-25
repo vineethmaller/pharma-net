@@ -81,7 +81,7 @@ organization:
       - ca.manufacturer.pharma-network.com
 
   distributor:
-    mspid: distributirMSP
+    mspid: distributorMSP
     peers:
       - peer0.distributor.pharma-network.com
       - peer1.distributor.pharma-network.com
@@ -114,100 +114,100 @@ organization:
 
 orderers:
   orderer.pharma-network.com:
-    url: grpc://localhost:7050
+    url: grpc://orderer.pharma-network.com:7050
     grpcOptions:
       ssl-target-name-override: orderer.pharma-network.com
     tlsCACerts:
-      path: ../../network/crypto-config/ordererOrganizations/pharma-network.com/orderers/orderer.pharma-network.com/msp/tlscacerts/tlsca.pharma-network.com-cert.pem
+      path: ../crypto-config/ordererOrganizations/pharma-network.com/orderers/orderer.pharma-network.com/msp/tlscacerts/tlsca.pharma-network.com-cert.pem
 
 peers:
   peer0.manufacturer.pharma-network.com:
-    url: grpc://localhost:7051
+    url: grpc://peer0.manufacturer.pharma-network.com:7051
     grpcOptions:
       ssl-target-name-override: peer0.manufacturer.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/manufacturer.pharma-network.com/peers/peer0.manufacturer.pharma-network.com/msp/tlscacerts/tlsca.manufacturer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/manufacturer.pharma-network.com/peers/peer0.manufacturer.pharma-network.com/msp/tlscacerts/tlsca.manufacturer.pharma-network.com-cert.pem
 
   peer1.manufacturer.pharma-network.com:
-    url: grpc://localhost:8051
+    url: grpc://peer1.manufacturer.pharma-network.com:8051
     grpcOptions:
       ssl-target-name-override: peer1.manufacturer.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/manufacturer.pharma-network.com/peers/peer1.manufacturer.pharma-network.com/msp/tlscacerts/tlsca.manufacturer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/manufacturer.pharma-network.com/peers/peer1.manufacturer.pharma-network.com/msp/tlscacerts/tlsca.manufacturer.pharma-network.com-cert.pem
 
   peer0.distributor.pharma-network.com:
-    url: grpc://localhost:9051
+    url: grpc://peer0.distributor.pharma-network.com:9051
     grpcOptions:
       ssl-target-name-override: peer0.distributor.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/distributor.pharma-network.com/peers/peer0.distributor.pharma-network.com/msp/tlscacerts/tlsca.distributor.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/distributor.pharma-network.com/peers/peer0.distributor.pharma-network.com/msp/tlscacerts/tlsca.distributor.pharma-network.com-cert.pem
 
   peer1.distributor.pharma-network.com:
-    url: grpc://localhost:10051
+    url: grpc://peer1.distributor.pharma-network.com:10051
     grpcOptions:
-      ssl-target-name-override: eer1.distributor.pharma-network.com
+      ssl-target-name-override: peer1.distributor.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/distributor.pharma-network.com/peers/peer1.distributor.pharma-network.com/msp/tlscacerts/tlsca.distributor.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/distributor.pharma-network.com/peers/peer1.distributor.pharma-network.com/msp/tlscacerts/tlsca.distributor.pharma-network.com-cert.pem
 
   peer0.retailer.pharma-network.com:
-    url: grpc://localhost:11051
+    url: grpc://peer0.retailer.pharma-network.com:11051
     grpcOptions:
       ssl-target-name-override: peer0.retailer.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/retailer.pharma-network.com/peers/peer0.retailer.pharma-network.com/msp/tlscacerts/tlsca.retailer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/retailer.pharma-network.com/peers/peer0.retailer.pharma-network.com/msp/tlscacerts/tlsca.retailer.pharma-network.com-cert.pem
 
   peer1.retailer.pharma-network.com:
-    url: grpc://localhost:12051
+    url: grpc://peer1.retailer.pharma-network.com:12051
     grpcOptions:
       ssl-target-name-override: peer1.retailer.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/retailer.pharma-network.com/peers/peer1.retailer.pharma-network.com/msp/tlscacerts/tlsca.retailer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/retailer.pharma-network.com/peers/peer1.retailer.pharma-network.com/msp/tlscacerts/tlsca.retailer.pharma-network.com-cert.pem
 
   peer0.consumer.pharma-network.com:
-    url: grpc://localhost:13051
+    url: grpc://peer0.consumer.pharma-network.com:13051
     grpcOptions:
       ssl-target-name-override: peer0.consumer.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/consumer.pharma-network.com/peers/peer0.consumer.pharma-network.com/msp/tlscacerts/tlsca.consumer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/consumer.pharma-network.com/peers/peer0.consumer.pharma-network.com/msp/tlscacerts/tlsca.consumer.pharma-network.com-cert.pem
 
   peer1.consumer.pharma-network.com:
-    url: grpc://localhost:14051
+    url: grpc://peer1.consumer.pharma-network.com:14051
     grpcOptions:
       ssl-target-name-override: peer1.consumer.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/consumer.pharma-network.com/peers/peer1.consumer.pharma-network.com/msp/tlscacerts/tlsca.consumer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/consumer.pharma-network.com/peers/peer1.consumer.pharma-network.com/msp/tlscacerts/tlsca.consumer.pharma-network.com-cert.pem
 
   peer0.transporter.pharma-network.com:
-    url: grpc://localhost:15051
+    url: grpc://peer0.transporter.pharma-network.com:15051
     grpcOptions:
       ssl-target-name-override: peer0.transporter.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/transporter.pharma-network.com/peers/peer0.transporter.pharma-network.com/msp/tlscacerts/tlsca.transporter.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/transporter.pharma-network.com/peers/peer0.transporter.pharma-network.com/msp/tlscacerts/tlsca.transporter.pharma-network.com-cert.pem
 
   peer1.transporter.pharma-network.com:
-    url: grpc://localhost:16051
+    url: grpc://peer1.transporter.pharma-network.com:16051
     grpcOptions:
       ssl-target-name-override: peer1.transporter.pharma-network.com
       request-timeout: 120001
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/transporter.pharma-network.com/peers/peer1.transporter.pharma-network.com/msp/tlscacerts/tlsca.transporter.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/transporter.pharma-network.com/peers/peer1.transporter.pharma-network.com/msp/tlscacerts/tlsca.transporter.pharma-network.com-cert.pem
 
 certificateAuthorities:
   ca.manufacturer.pharma-network.com:
-    url: http://localhost:7054
+    url: http://ca.manufacturer.pharma-network.com:7054
     httpOptions:
       verify: false
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/manufacturer.pharma-network.com/ca/ca.manufacturer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/manufacturer.pharma-network.com/ca/ca.manufacturer.pharma-network.com-cert.pem
 
     registrar:
       - enrollId: admin
@@ -215,11 +215,11 @@ certificateAuthorities:
     caName: ca.manufacturer.pharma-network.com
 
   ca.distributor.pharma-network.com:
-    url: http://localhost:9054
+    url: http://ca.distributor.pharma-network.com:9054
     httpOptions:
       verify: false
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/distributor.pharma-network.com/ca/ca.distributor.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/distributor.pharma-network.com/ca/ca.distributor.pharma-network.com-cert.pem
 
     registrar:
       - enrollId: admin
@@ -227,11 +227,11 @@ certificateAuthorities:
     caName: ca.distributor.pharma-network.com
 
   ca.retailer.pharma-network.com:
-    url: http://localhost:11054
+    url: http://ca.retailer.pharma-network.com:11054
     httpOptions:
       verify: false
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/retailer.pharma-network.com/ca/ca.retailer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/retailer.pharma-network.com/ca/ca.retailer.pharma-network.com-cert.pem
 
     registrar:
       - enrollId: admin
@@ -239,11 +239,11 @@ certificateAuthorities:
     caName: ca.retailer.pharma-network.com
 
   ca.consumer.pharma-network.com:
-    url: http://localhost:13054
+    url: http://ca.consumer.pharma-network.com:13054
     httpOptions:
       verify: false
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/consumer.pharma-network.com/ca/ca.consumer.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/consumer.pharma-network.com/ca/ca.consumer.pharma-network.com-cert.pem
 
     registrar:
       - enrollId: admin
@@ -251,11 +251,11 @@ certificateAuthorities:
     caName: ca.consumer.pharma-network.com
 
   ca.transporter.pharma-network.com:
-    url: http://localhost:15054
+    url: http://ca.transporter.pharma-network.com:15054
     httpOptions:
       verify: false
     tlsCACerts:
-      path: ../../network/crypto-config/peerOrganizations/transporter.pharma-network.com/ca/ca.transporter.pharma-network.com-cert.pem
+      path: ../crypto-config/peerOrganizations/transporter.pharma-network.com/ca/ca.transporter.pharma-network.com-cert.pem
 
     registrar:
       - enrollId: admin

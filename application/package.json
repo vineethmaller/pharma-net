@@ -4,15 +4,15 @@
     "description": "API for accessing the Pharma network",
     "main": "index.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Vineeth Maller",
     "dependencies": {
-      "js-yaml": "^3.12.0",
-      "pug": "^2.0.4",
-      "express": "^4.17.1",
-      "fabric-network": "^1.4.4",
-      "cors": "^2.8.5",
-      "fabric-client": "^1.4.4"
+        "cors": "^2.8.5",
+        "express": "^4.18.1",
+        "fabric-client": "^1.4.20",
+        "fabric-network": "^1.4.20",
+        "js-yaml": "^4.1.0",
+        "pug": "^3.0.2"
     }
-  }
+}

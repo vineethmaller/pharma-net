@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const transporterContractApi = require('./contract-apis/transporterContract');
+const transporterContractApi = require('../contract-apis/transporterContract');
 
 router.post('/updateShipment', (req, res) => {
     transporterContractApi.updateShipment(req.body.buyerCRN, req.body.drugName, req.body.transporterCRN, req.headers.organizationRole)
@@ -25,4 +25,4 @@ router.post('/updateShipment', (req, res) => {
     });
 });
 
-module.exports.router = router;
+module.exports = router;

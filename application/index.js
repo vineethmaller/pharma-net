@@ -17,13 +17,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 app.set('title', 'Pharma Network API');
 
-//Healthcheck
-app.get('/health', (req, res) => res.send('Application is working'));
-
 app.use('/wallet', walletResourceRouter);
 app.use('/common', commonResourceRouter);
 app.use('/manufacturer', manufacturerResourceRouter);
 app.use('/retailer', retailerResourceRouter);
 app.use('/transporter', transporterResourceRouter);
+
+//Healthcheck
+app.get('/health', (req, res) => res.send('Application is working'));
 
 app.listen(PORT, () => console.log(`Pharma network API is up and listening on port ${PORT}!`));

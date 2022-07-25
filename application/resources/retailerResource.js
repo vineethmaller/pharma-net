@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const retailerContractApi = require('./contract-apis/retailerContract');
+const retailerContractApi = require('../contract-apis/retailerContract');
 
 router.post('/retailDrug', (req, res) => {
     retailerContractApi.retailDrug(req.body.drugName, req.body.serialNo, req.body.retailerCRN, req.body.customerAadhar, req.headers.organizationRole)
@@ -25,4 +25,4 @@ router.post('/retailDrug', (req, res) => {
     });
 });
 
-module.exports.router = router;
+module.exports = router;

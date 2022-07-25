@@ -3,11 +3,11 @@
 const express = require('express');
 const router = express.Router();
 
-const addToWalletManufacturer = require('./wallets/manufacturer');
-const addToWalletDistributor = require('./wallets/distributor');
-const addToWalletRetailer = require('./wallets/retailer');
-const addToWalletConsumer = require('./wallets/consumer');
-const addToWalletTransporter = require('./wallets/transporter');
+const addToWalletManufacturer = require('../wallets/manufacturer');
+const addToWalletDistributor = require('../wallets/distributor');
+const addToWalletRetailer = require('../wallets/retailer');
+const addToWalletConsumer = require('../wallets/consumer');
+const addToWalletTransporter = require('../wallets/transporter');
 
 router.post('/add/manufacturer', (req, res) => {
     addToWalletManufacturer.execute(req.body.certificationPath, req.body.privateKeyPath)
@@ -104,4 +104,4 @@ router.post('/add/transporter', (req, res) => {
     });
 });
 
-module.exports.router = router;
+module.exports = router;

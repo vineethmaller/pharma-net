@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const manufacturerContractApi = require('./contract-apis/manufacturerContract');
+const manufacturerContractApi = require('../contract-apis/manufacturerContract');
 
 router.post('/addDrug', (req, res) => {
     manufacturerContractApi.addDrug(req.body.drugName, req.body.serialNo, req.body.manufacturedDate, req.body.expiryDate, req.body.companyCRN, req.headers.organizationRole)
@@ -25,4 +25,4 @@ router.post('/addDrug', (req, res) => {
     });
 });
 
-module.exports.router = router;
+module.exports = router;
