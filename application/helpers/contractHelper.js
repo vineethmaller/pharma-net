@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const fs = require('fs');
 const yaml = require('js-yaml');
 const { FileSystemWallet, Gateway } = require('fabric-network');
@@ -14,9 +15,9 @@ async function getContractInstance(contractType, organizationRole) {
 
     gateway = new Gateway();
 
-    let profile = getProfileByContractType(contractType);
+    let profile = await getProfileByContractType(contractType);
 
-    let walletCreds = getWalletCredsByOrganizationRole(organizationRole)
+    let walletCreds = await getWalletCredsByOrganizationRole(organizationRole)
 
     let connectionObject = {
         wallet : walletCreds.wallet,
@@ -47,65 +48,52 @@ async function disconnect() {
     }
 }
 
-function getProfileByContractType(contractType) {
-    let result;
+async function getProfileByContractType(contractType) {
+    let result = {};
 
-    switch(contractType) {
-        case PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.TYPE : result = {
-            smartContractName : PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.NAME,
-            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
-            connectionProfile : yaml.safeLoad(connectionProfileFile)
-        }; break;
-        case PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.TYPE : result = {
-            smartContractName : PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.NAME,
-            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
-            connectionProfile : yaml.safeLoad(connectionProfileFile),
-        }; break;
-        case PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.TYPE : result = {
-            smartContractName : PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.NAME,
-            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
-            connectionProfile : yaml.safeLoad(connectionProfileFile),
-        }; break;
-        case PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.TYPE : result = {
-            smartContractName : PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.NAME,
-            connectionProfileFile : fs.readFileSync('../' + PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8),
-            connectionProfile : yaml.safeLoad(connectionProfileFile),
-        }; break;
-        default : {
+    if(contractType === PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.TYPE) {
+        result.smartContractName = PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.NAME;
+        result.connectionProfileFile = fs.readFileSync(PHARMA_NETWORK.CONTRACTS.COMMON_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8);
+        result.connectionProfile = yaml.load(result.connectionProfileFile);
+    } else if(contractType === PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.TYPE) {
+        result.smartContractName = PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.NAME;
+        result.connectionProfileFile = fs.readFileSync(PHARMA_NETWORK.CONTRACTS.MANUFACTURER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8);
+        result.connectionProfile = yaml.load(result.connectionProfileFile);
+    } else if(contractType === PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.TYPE) {
+        result.smartContractName = PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.NAME;
+        result.connectionProfileFile = fs.readFileSync(PHARMA_NETWORK.CONTRACTS.RETAILER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8);
+        result.connectionProfile = yaml.load(result.connectionProfileFile);
+    } else if(contractType === PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.TYPE) {
+        result.smartContractName = PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.NAME;
+        result.connectionProfileFile = fs.readFileSync(PHARMA_NETWORK.CONTRACTS.TRANSPORTER_CONTRACT.CONNECTION_PROFILE_PATH, UTF_8);
+        result.connectionProfile = yaml.load(result.connectionProfileFile);
+    } else {
             throw new Error('Invalid contract type provided');
-        }
     }
 
     return result;
 }
 
-function getWalletCredsByOrganizationRole(organizationRole) {
-    let result;
+async function getWalletCredsByOrganizationRole(organizationRole) {
+    let result = {};
 
-    switch(organizationRole) {
-        case CREDENTIALS.MANUFACTURER.ROLE : result = {
-            wallet : new FileSystemWallet('../' + CREDENTIALS.MANUFACTURER.WALLET_PATH),
-            userName : CREDENTIALS.MANUFACTURER.ADMIN.IDENTITY_LABEL
-        }; break;
-        case CREDENTIALS.DISTRIBUTOR.ROLE : result = {
-            wallet : new FileSystemWallet('../' + CREDENTIALS.DISTRIBUTOR.WALLET_PATH),
-            userName : CREDENTIALS.DISTRIBUTOR.ADMIN.IDENTITY_LABEL
-        }; break;
-        case CREDENTIALS.RETAILER.ROLE : result = {
-            wallet : new FileSystemWallet('../' + CREDENTIALS.RETAILER.WALLET_PATH),
-            userName : CREDENTIALS.RETAILER.ADMIN.IDENTITY_LABEL
-        }; break;
-        case CREDENTIALS.CONSUMER.ROLE : result = {
-            wallet : new FileSystemWallet('../' + CREDENTIALS.CONSUMER.WALLET_PATH),
-            userName : CREDENTIALS.CONSUMER.ADMIN.IDENTITY_LABEL
-        }; break;
-        case CREDENTIALS.TRANSPORTER.ROLE : result = {
-            wallet : new FileSystemWallet('../' + CREDENTIALS.TRANSPORTER.WALLET_PATH),
-            userName : CREDENTIALS.TRANSPORTER.ADMIN.IDENTITY_LABEL
-        }; break;
-        default : {
-            throw new Error('Invalid organization role provided');
-        }
+    if(organizationRole === CREDENTIALS.MANUFACTURER.ROLE) {
+        result.wallet = new FileSystemWallet(CREDENTIALS.MANUFACTURER.WALLET_PATH);
+        result.userName = CREDENTIALS.MANUFACTURER.ADMIN.IDENTITY_LABEL;
+    } else if (organizationRole === CREDENTIALS.DISTRIBUTOR.ROLE) {
+        result.wallet = new FileSystemWallet(CREDENTIALS.DISTRIBUTOR.WALLET_PATH);
+        result.userName = CREDENTIALS.DISTRIBUTOR.ADMIN.IDENTITY_LABEL;
+    } else if(organizationRole === CREDENTIALS.RETAILER.ROLE) {
+        result.wallet = new FileSystemWallet(CREDENTIALS.RETAILER.WALLET_PATH);
+        result.userName = CREDENTIALS.RETAILER.ADMIN.IDENTITY_LABEL;
+    } else if(organizationRole === CREDENTIALS.CONSUMER.ROLE) {
+        result.wallet = new FileSystemWallet(CREDENTIALS.CONSUMER.WALLET_PATH);
+        result.userName = CREDENTIALS.CONSUMER.ADMIN.IDENTITY_LABEL;
+    } else if(organizationRole === CREDENTIALS.TRANSPORTER.ROLE) {
+        result.wallet = new FileSystemWallet(CREDENTIALS.TRANSPORTER.WALLET_PATH);
+        result.userName = CREDENTIALS.TRANSPORTER.ADMIN.IDENTITY_LABEL;
+    } else {
+        throw new Error('Invalid organization role provided');
     }
 
     return result;

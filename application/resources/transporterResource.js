@@ -6,7 +6,7 @@ const router = express.Router();
 const transporterContractApi = require('../contract-apis/transporterContract');
 
 router.post('/updateShipment', (req, res) => {
-    transporterContractApi.updateShipment(req.body.buyerCRN, req.body.drugName, req.body.transporterCRN, req.headers.organizationRole)
+    transporterContractApi.updateShipment(req.body.buyer_crn, req.body.drug_name, req.body.transporter_crn, req.headers.organization_role)
     .then((result) => {
         const responseBody = {
             status : 'success',

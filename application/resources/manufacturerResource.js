@@ -6,7 +6,7 @@ const router = express.Router();
 const manufacturerContractApi = require('../contract-apis/manufacturerContract');
 
 router.post('/addDrug', (req, res) => {
-    manufacturerContractApi.addDrug(req.body.drugName, req.body.serialNo, req.body.manufacturedDate, req.body.expiryDate, req.body.companyCRN, req.headers.organizationRole)
+    manufacturerContractApi.addDrug(req.body.drug_name, req.body.serial_no, req.body.manufactured_date, req.body.expiry_date, req.body.company_crn, req.headers.organization_role)
     .then((result) => {
         const responseBody = {
             status : 'success',

@@ -105,13 +105,12 @@ services:
       - pharma
 
   api.pharma-network.com:
-    image: "vineethmaller/node-app-server:latest"
+    image: "vineethmaller/hyperledger-fabric-apiserver:latest"
     ports:
       - "8080:8080"
-    command: sh -c 'cd /home/node/app && npm install --no-bin-links && node index.js'
     volumes:
       - ../application/:/home/node/app
-      - ../../network/cypto-config:/home/node/crypto-config
+      - ./crypto-config/:/home/node/crypto-config
     container_name: api.pharma-network.com
     networks:
       - pharma

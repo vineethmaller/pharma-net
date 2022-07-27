@@ -26,4 +26,6 @@ app.use('/transporter', transporterResourceRouter);
 //Healthcheck
 app.get('/health', (req, res) => res.send('Application is working'));
 
-app.listen(PORT, () => console.log(`Pharma network API is up and listening on port ${PORT}!`));
+app.get('/kill', (req, res) => process.exit());
+
+app.listen(PORT, () => console.log(`Pharma network API is up and listening on port ${PORT} @ ` + (new Date()).toLocaleString()));

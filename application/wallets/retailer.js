@@ -3,14 +3,17 @@
 const fs = require('fs');
 const { X509WalletMixin, FileSystemWallet } = require('fabric-network');
 
+const { CommonHelper } = require('../helpers/commonHelper');
 const { CREDENTIALS } = require('../constants');
 
-const wallet = new FileSystemWallet('./identity/retailer');
+const wallet = new FileSystemWallet(CREDENTIALS.RETAILER.WALLET_PATH);
 
-async function main(certPath, privKeyPath) {
+async function main(certPath, privateKeyDirPath) {
     try {
+        const privateKeyPath = CommonHelper.getPrivateKeyFullPathFromDir(privateKeyDirPath);
+
         const certificate = fs.readFileSync(certPath).toString();
-        const privateKey = fs.readFileSync(privKeyPath).toString();
+        const privateKey = fs.readFileSync(privateKeyPath).toString();
 
         const identity = X509WalletMixin.createIdentity(CREDENTIALS.RETAILER.MSP_ID, certificate, privateKey);
         

@@ -20,7 +20,7 @@ async function registerCompany(companyCRN, companyName, location, organizationRo
         return companyObject;
     } catch(error) {
         console.log('Error: ${error}');
-        throw new Error(error);
+        throw error;
     } finally {
         contractHelper.disconnect();
         console.log('Disconnected from network');
@@ -42,7 +42,7 @@ async function createPurchaseOrder(buyerCRN, sellerCRN, drugName, quantity, orga
         return purchaseOrderObject;
     } catch(error) {
         console.log('Error: ${error}');
-        throw new Error(error);
+        throw error;
     } finally {
         contractHelper.disconnect();
         console.log('Disconnected from network');
@@ -64,7 +64,7 @@ async function createShipment(buyerCRN, drugName, listOfAssets, transporterCRN, 
         return shipmentObject;
     } catch(error) {
         console.log('Error: ${error}');
-        throw new Error(error);
+        throw error;
     } finally {
         contractHelper.disconnect();
         console.log('Disconnected from network');
@@ -86,7 +86,7 @@ async function viewHistory(drugName, serialNo, organizationRole) {
         return drugHistoryObject;
     } catch(error) {
         console.log('Error: ${error}');
-        throw new Error(error);
+        throw error;
     } finally {
         contractHelper.disconnect();
         console.log('Disconnected from network');
@@ -95,6 +95,8 @@ async function viewHistory(drugName, serialNo, organizationRole) {
 
 async function viewDrugState(drugName, serialNo, organizationRole) {
     try {
+        console.log('Role: ' + organizationRole);
+
         const contract = await contractHelper.getContractInstance(CONTRACT.TYPE, organizationRole);
         console.log('Connected to smart contract');
 
@@ -108,7 +110,7 @@ async function viewDrugState(drugName, serialNo, organizationRole) {
         return drugObject;
     } catch(error) {
         console.log('Error: ${error}');
-        throw new Error(error);
+        throw error;
     } finally {
         contractHelper.disconnect();
         console.log('Disconnected from network');

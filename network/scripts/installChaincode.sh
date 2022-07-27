@@ -36,19 +36,29 @@ echo "Channel name : "$CHANNEL_NAME
 . scripts/utils.sh
 
 ## Install new version of chaincode on peer0 of all 5 orgs making them endorsers
-echo "Installing chaincode on peer0.manufacturer.pharma-network.com.com ..."
+echo "Installing chaincode on peer0.manufacturer.pharma-network.com ..."
 installChaincode 0 'manufacturer' $VERSION
-echo "Installing chaincode on peer0.distributor.pharma-network.com.com ..."
+echo "Installing chaincode on peer1.manufacturer.pharma-network.com ..."
+installChaincode 1 'manufacturer' $VERSION
+echo "Installing chaincode on peer0.distributor.pharma-network.com ..."
 installChaincode 0 'distributor' $VERSION
-echo "Installing chaincode on peer0.retailer.pharma-network.com.com ..."
+echo "Installing chaincode on peer1.distributor.pharma-network.com ..."
+installChaincode 1 'distributor' $VERSION
+echo "Installing chaincode on peer0.retailer.pharma-network.com ..."
 installChaincode 0 'retailer' $VERSION
-echo "Installing chaincode on peer0.consumer.pharma-network.com.com ..."
+echo "Installing chaincode on peer1.retailer.pharma-network.com ..."
+installChaincode 1 'retailer' $VERSION
+echo "Installing chaincode on peer0.consumer.pharma-network.com ..."
 installChaincode 0 'consumer' $VERSION
-echo "Installing chaincode on peer0.transporter.pharma-network.com.com ..."
+echo "Installing chaincode on peer1.consumer.pharma-network.com ..."
+installChaincode 1 'consumer' $VERSION
+echo "Installing chaincode on peer0.transporter.pharma-network.com ..."
 installChaincode 0 'transporter' $VERSION
+echo "Installing chaincode on peer1.transporter.pharma-network.com ..."
+installChaincode 1 'transporter' $VERSION
 
 # Instantiate chaincode on the channel using peer0.manufacturer
-echo "Instantiating chaincode on channel using peer0.manufacturer.pharma-network.com.com ..."
+echo "Instantiating chaincode on channel using peer0.manufacturer.pharma-network.com ..."
 instantiateChaincode 0 'manufacturer' $VERSION
 
 echo

@@ -13,6 +13,7 @@
         "fabric-client": "^1.4.20",
         "fabric-network": "^1.4.20",
         "js-yaml": "^4.1.0",
-        "pug": "^3.0.2"
+        "pug": "^3.0.2",
+        "glob": "^8.0.3"
     }
 }

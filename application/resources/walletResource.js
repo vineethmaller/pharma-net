@@ -10,7 +10,7 @@ const addToWalletConsumer = require('../wallets/consumer');
 const addToWalletTransporter = require('../wallets/transporter');
 
 router.post('/add/manufacturer', (req, res) => {
-    addToWalletManufacturer.execute(req.body.certificationPath, req.body.privateKeyPath)
+    addToWalletManufacturer.execute(req.body.certificate_path, req.body.privatekey_dirpath)
     .then(() => {
         const responseBody = {
             status : 'success',
@@ -29,7 +29,7 @@ router.post('/add/manufacturer', (req, res) => {
 });
 
 router.post('/add/distributor', (req, res) => {
-    addToWalletDistributor.execute(req.body.certificationPath, req.body.privateKeyPath)
+    addToWalletDistributor.execute(req.body.certificate_path, req.body.privatekey_dirpath)
     .then(() => {
         const responseBody = {
             status : 'success',
@@ -48,7 +48,7 @@ router.post('/add/distributor', (req, res) => {
 });
 
 router.post('/add/retailer', (req, res) => {
-    addToWalletRetailer.execute(req.body.certificationPath, req.body.privateKeyPath)
+    addToWalletRetailer.execute(req.body.certificate_path, req.body.privatekey_dirpath)
     .then(() => {
         const responseBody = {
             status : 'success',
@@ -67,7 +67,7 @@ router.post('/add/retailer', (req, res) => {
 });
 
 router.post('/add/consumer', (req, res) => {
-    addToWalletConsumer.execute(req.body.certificationPath, req.body.privateKeyPath)
+    addToWalletConsumer.execute(req.body.certificate_path, req.body.privatekey_dirpath)
     .then(() => {
         const responseBody = {
             status : 'success',
@@ -86,7 +86,7 @@ router.post('/add/consumer', (req, res) => {
 });
 
 router.post('/add/transporter', (req, res) => {
-    addToWalletTransporter.execute(req.body.certificationPath, req.body.privateKeyPath)
+    addToWalletTransporter.execute(req.body.certificate_path, req.body.privatekey_dirpath)
     .then(() => {
         const responseBody = {
             status : 'success',

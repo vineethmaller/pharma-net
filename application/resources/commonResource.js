@@ -6,7 +6,7 @@ const router = express.Router();
 const commonContractApi = require('../contract-apis/commonContract');
 
 router.post('/registerCompany', (req, res) => {
-    commonContractApi.registerCompany(req.body.companyCRN, req.body.companyName, req.body.location, req.body.organizationRole)
+    commonContractApi.registerCompany(req.body.company_crn, req.body.company_name, req.body.location, req.body.organization_role)
     .then((result) => {
         const responseBody = {
             status : 'success',
@@ -26,7 +26,7 @@ router.post('/registerCompany', (req, res) => {
 });
 
 router.post('/createPO', (req, res) => {
-    commonContractApi.createPurchaseOrder(req.body.buyerCRN, req.body.sellerCRN, req.body.drugName, req.body.quantity, req.headers.organizationRole)
+    commonContractApi.createPurchaseOrder(req.body.buyer_crn, req.body.seller_crn, req.body.drug_name, req.body.quantity, req.headers.organization_role)
     .then((result) => {
         const responseBody = {
             status : 'success',
@@ -46,7 +46,7 @@ router.post('/createPO', (req, res) => {
 });
 
 router.post('/createShipment', (req, res) => {
-    commonContractApi.createShipment(req.body.buyerCRN, req.body.drugName, req.body.assets, req.body.transporterCRN, req.headers.organizationRole)
+    commonContractApi.createShipment(req.body.buyer_crn, req.body.drug_name, req.body.assets, req.body.transporter_crn, req.headers.organization_role)
     .then((result) => {
         const responseBody = {
             status : 'success',
@@ -66,7 +66,7 @@ router.post('/createShipment', (req, res) => {
 });
 
 router.post('/view/drug', (req, res) => {
-    commonContractApi.viewDrugState(req.drugName, req.body.serialNo, req.headers.organizationRole)
+    commonContractApi.viewDrugState(req.body.drug_name, req.body.serial_no, req.headers.organization_role)
     .then((result) => {
         const responseBody = {
             status : 'success',
@@ -86,7 +86,7 @@ router.post('/view/drug', (req, res) => {
 });
 
 router.post('/view/history', (req, res) => {
-    commonContractApi.viewHistory(req.body.drugName, req.body.serialNo, req.headers.organizationRole)
+    commonContractApi.viewHistory(req.body.drug_name, req.body.serial_no, req.headers.organization_role)
     .then((result) => {
         const responseBody = {
             status : 'success',
