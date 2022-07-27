@@ -108,6 +108,7 @@ services:
     image: "vineethmaller/hyperledger-fabric-apiserver:latest"
     ports:
       - "8080:8080"
+    command: bash -c 'sleep infinity'    
     volumes:
       - ../application/:/home/node/app
       - ./crypto-config/:/home/node/crypto-config

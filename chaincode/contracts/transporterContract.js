@@ -110,7 +110,7 @@ class TransporterContract extends Contract {
 			let drugObjectBuffer = ctx.stub.getState(asset);
 
 			if(drugObjectBuffer === 0) {
-				return ERRORS.ASSET_NOT_FOUND;
+				return ERRORS.DRUG_NOT_FOUND;
 			}
 
 			let drugObject = Utils.bufferToJson(drugObjectBuffer);

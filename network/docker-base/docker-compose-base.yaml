@@ -61,7 +61,7 @@ services:
       - CORE_PEER_ID=peer1.manufacturer.pharma-network.com
       - CORE_PEER_ADDRESS=peer1.manufacturer.pharma-network.com:8051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.manufacturer.pharma-network.com:8053
+      - CORE_PEER_CHAINCODEADDRESS=peer1.manufacturer.pharma-network.com:8053
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8053
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.manufacturer.pharma-network.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.manufacturer.pharma-network.com:8051
@@ -108,7 +108,7 @@ services:
       - CORE_PEER_ID=peer1.distributor.pharma-network.com
       - CORE_PEER_ADDRESS=peer1.distributor.pharma-network.com:10051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:10051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.distributor.pharma-network.com:10053
+      - CORE_PEER_CHAINCODEADDRESS=peer1.distributor.pharma-network.com:10053
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10053
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.distributor.pharma-network.com:9051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.distributor.pharma-network.com:10051
@@ -155,7 +155,7 @@ services:
       - CORE_PEER_ID=peer1.retailer.pharma-network.com
       - CORE_PEER_ADDRESS=peer1.retailer.pharma-network.com:12051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:12051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.retailer.pharma-network.com:12053
+      - CORE_PEER_CHAINCODEADDRESS=peer1.retailer.pharma-network.com:12053
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:12053
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.retailer.pharma-network.com:11051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.retailer.pharma-network.com:12051
@@ -179,7 +179,7 @@ services:
       - CORE_PEER_ID=peer0.consumer.pharma-network.com
       - CORE_PEER_ADDRESS=peer0.consumer.pharma-network.com:13051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:13051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.consumer.pharma-network.com:13053
+      - CORE_PEER_CHAINCODEADDRESS=peer1.consumer.pharma-network.com:13053
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:13053
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.consumer.pharma-network.com:14051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.consumer.pharma-network.com:13051
@@ -226,7 +226,7 @@ services:
       - CORE_PEER_ID=peer0.transporter.pharma-network.com
       - CORE_PEER_ADDRESS=peer0.transporter.pharma-network.com:15051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:15051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.transporter.pharma-network.com:15053
+      - CORE_PEER_CHAINCODEADDRESS=peer1.transporter.pharma-network.com:15053
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:15053
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.transporter.pharma-network.com:16051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.transporter.pharma-network.com:15051

@@ -9,6 +9,8 @@ const addToWalletRetailer = require('../wallets/retailer');
 const addToWalletConsumer = require('../wallets/consumer');
 const addToWalletTransporter = require('../wallets/transporter');
 
+const resourceHelper = require('../helpers/resourceHelper');
+
 router.post('/add/manufacturer', (req, res) => {
     addToWalletManufacturer.execute(req.body.certificate_path, req.body.privatekey_dirpath)
     .then(() => {
@@ -19,11 +21,7 @@ router.post('/add/manufacturer', (req, res) => {
         res.send(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'wallet',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -38,11 +36,7 @@ router.post('/add/distributor', (req, res) => {
         res.send(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'wallet',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -57,11 +51,7 @@ router.post('/add/retailer', (req, res) => {
         res.send(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'wallet',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -76,11 +66,7 @@ router.post('/add/consumer', (req, res) => {
         res.send(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'wallet',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -95,11 +81,7 @@ router.post('/add/transporter', (req, res) => {
         res.send(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'wallet',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });

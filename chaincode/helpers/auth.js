@@ -5,7 +5,7 @@ const { ROLES, ERRORS } = require('../constants');
 class Auth {
 
     static authorizeRole(ctx, _role) {
-        if(ctx.clientIdentity.mspId != _role) {
+        if(ctx.clientIdentity.mspId !== _role) {
             throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
         }
     }
@@ -41,8 +41,7 @@ class Auth {
 
     static roleExists(_role) {
         return Object.values(ROLES)
-            .filter(role => role.mspID === _role)
-            .length === 1;
+            .find(role => role.mspID === _role);
     }
 
     static organizationRoleExists(organizationRole) {
@@ -57,17 +56,10 @@ class Auth {
 	}
 
     static doesOrganizationRoleMatchMSPID(ctx, organizationRole) {
-        if(this.organizationRoleExists(organizationRole)) {
-            return ROLES[organizationRole.toUpperCase()].mspID === ctx.mspId;
+        if(organizationRoleExists(organizationRole)) {
+            return ROLES[organizationRole.toUpperCase()].mspID === ctx.clientIdentity.mspId;
         }
         throw new Error(ERRORS.ORGANIZATION_ROLE_NOT_FOUND);
-    }
-
-    validateUser(ctx, userID) {
-        this.authorizeUserRole(ctx);
-        if(ctx.clientIdentity.getID() != userID) {
-            throw new Error(ERRORS.USER_VALIDATION_ERROR);
-        }
     }
 }
 

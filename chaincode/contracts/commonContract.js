@@ -35,7 +35,7 @@ class CommonContract extends Contract {
 	async registerCompany(ctx, companyCRN, companyName, location, organizationRole) {
 		
 		//Checks if the caller has a valid role in network
-		if(Auth.roleExists(ctx.mspId)) {
+		if(Auth.roleExists(ctx.clientIdentity.mspId)) {
 
 			//Checks if the organization role provided exists 
 			//and whether it matches with the entity's network role
@@ -63,7 +63,7 @@ class CommonContract extends Contract {
 			}
 			throw new Error(ERRORS.ORGANIZATION_ROLE_DOES_NOT_MATCH_MSP_ID);
 		}
-		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR + ' Role: ' + ctx.mspId);
 	}
 
 	/**
@@ -213,7 +213,7 @@ class CommonContract extends Contract {
 			}
 			return transactionArray;
 		}
-		throw new Error(ERRORS.ASSET_NOT_FOUND);
+		throw new Error(ERRORS.DRUG_NOT_FOUND);
 	}
 
 	/**
@@ -231,7 +231,7 @@ class CommonContract extends Contract {
 		if(productObjectBuffer.length !== 0) {
 			return Utils.bufferToJson(productObjectBuffer);
 		}
-		throw new Error(ERRORS.ASSET_NOT_FOUND);
+		throw new Error(ERRORS.DRUG_NOT_FOUND);
 	}
 
 	/**
@@ -246,7 +246,7 @@ class CommonContract extends Contract {
 			let drugObjectBuffer = ctx.stub.getState(asset);
 
 			if(drugObjectBuffer === 0) {
-				throw new Error(ERRORS.ASSET_NOT_FOUND);
+				throw new Error(ERRORS.DRUG_NOT_FOUND);
 			}
 
 			let drugObject = Utils.bufferToJson(drugObjectBuffer);

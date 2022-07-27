@@ -7,7 +7,7 @@ description: "pharma-network"
 version: "1.0"
 
 client:
-  organization: manufacturer
+  organization: consumer
   connection:
     timeout:
       peer:
@@ -52,10 +52,10 @@ channels:
         ledgerQuery: true
         eventSource: false
       peer0.consumer.pharma-network.com:
-        endorsingPeer: false
-        chaincodeQuery: false
+        endorsingPeer: true
+        chaincodeQuery: true
         ledgerQuery: true
-        eventSource: false
+        eventSource: true
       peer1.consumer.pharma-network.com:
         endorsingPeer: false
         chaincodeQuery: false
@@ -122,7 +122,7 @@ orderers:
 
 peers:
   peer0.manufacturer.pharma-network.com:
-    url: grpc://peer0.manufacturer.pharma-network.com:7051
+    url: grpc://peer0.manufacturer.pharma-network:7051
     grpcOptions:
       ssl-target-name-override: peer0.manufacturer.pharma-network.com
       request-timeout: 120001
@@ -130,7 +130,7 @@ peers:
       path: ../crypto-config/peerOrganizations/manufacturer.pharma-network.com/peers/peer0.manufacturer.pharma-network.com/msp/tlscacerts/tlsca.manufacturer.pharma-network.com-cert.pem
 
   peer1.manufacturer.pharma-network.com:
-    url: grpc://peer1.manufacturer.pharma-network.com:8051
+    url: grpc://peer1.manufacturer.pharma-network:8051
     grpcOptions:
       ssl-target-name-override: peer1.manufacturer.pharma-network.com
       request-timeout: 120001
@@ -138,7 +138,7 @@ peers:
       path: ../crypto-config/peerOrganizations/manufacturer.pharma-network.com/peers/peer1.manufacturer.pharma-network.com/msp/tlscacerts/tlsca.manufacturer.pharma-network.com-cert.pem
 
   peer0.distributor.pharma-network.com:
-    url: grpc://peer0.distributor.pharma-network.com:9051
+    url: grpc://peer0.distributor.pharma-network:9051
     grpcOptions:
       ssl-target-name-override: peer0.distributor.pharma-network.com
       request-timeout: 120001
@@ -146,7 +146,7 @@ peers:
       path: ../crypto-config/peerOrganizations/distributor.pharma-network.com/peers/peer0.distributor.pharma-network.com/msp/tlscacerts/tlsca.distributor.pharma-network.com-cert.pem
 
   peer1.distributor.pharma-network.com:
-    url: grpc://peer1.distributor.pharma-network.com:10051
+    url: grpc://peer1.distributor.pharma-network:10051
     grpcOptions:
       ssl-target-name-override: peer1.distributor.pharma-network.com
       request-timeout: 120001

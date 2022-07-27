@@ -37,7 +37,7 @@ const ERRORS = {
     PRODUCT_NOT_FOUND : 'The drug is not found in the inventory',
     INVALID_MANUFACTURED_DATE : 'Manufactured date of drug is invalid',
     INVALID_EXPIRY_DATE : 'Expired date of drug is invalid',
-    ASSET_NOT_FOUND : 'The provided asset does not exist in the inventory',
+    DRUG_NOT_FOUND : 'The provided drug does not exist in the inventory',
     PURCHASE_ORDER_NOT_FOUND : 'Purchase order not found for this shipment',
     SHIPMENT_NOT_FOUND : 'Shipment is not found in the database',
     TRANSPORTER_DOES_NOT_MATCH : 'This transporter not assigned to the shipment',

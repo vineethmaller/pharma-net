@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const manufacturerContractApi = require('../contract-apis/manufacturerContract');
+const resourceHelper = require('../helpers/resourceHelper');
 
 router.post('/addDrug', (req, res) => {
     manufacturerContractApi.addDrug(req.body.drug_name, req.body.serial_no, req.body.manufactured_date, req.body.expiry_date, req.body.company_crn, req.headers.organization_role)
@@ -16,11 +17,7 @@ router.post('/addDrug', (req, res) => {
         res.json(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'manufacturer contract api',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });

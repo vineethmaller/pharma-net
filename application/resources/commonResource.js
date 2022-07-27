@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const commonContractApi = require('../contract-apis/commonContract');
+const resourceHelper = require('../helpers/resourceHelper');
 
 router.post('/registerCompany', (req, res) => {
     commonContractApi.registerCompany(req.body.company_crn, req.body.company_name, req.body.location, req.body.organization_role)
@@ -16,11 +17,7 @@ router.post('/registerCompany', (req, res) => {
         res.json(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'common contract api',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -36,11 +33,7 @@ router.post('/createPO', (req, res) => {
         res.json(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'common contract api',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -56,11 +49,7 @@ router.post('/createShipment', (req, res) => {
         res.json(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'common contract api',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -76,11 +65,7 @@ router.post('/view/drug', (req, res) => {
         res.json(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'common contract api',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
@@ -96,11 +81,7 @@ router.post('/view/history', (req, res) => {
         res.json(responseBody);
     })
     .catch((error) => {
-        const responseBody = {
-            status : 'error',
-            source : 'common contract api',
-            error : error
-        };
+        let responseBody = resourceHelper.getErrorResponseObject(req, error);
         res.status(500).send(responseBody);
     });
 });
