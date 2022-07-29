@@ -1,7 +1,8 @@
 network/crypto-config/
 network/channel-artifacts/
+application/identity
+application/node_modules/
+application/wallets/identity/
 chaincode/node_modules/
-node_modules/
 
 application/*.log.*
-**/package-lock.json
