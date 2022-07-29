@@ -14,19 +14,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "certificate_path",
-									"value": "{{MANUFACTURER.USER1.CERTIFICATE_PATH}}",
-									"type": "default"
-								},
-								{
-									"key": "privatekey_dirpath",
-									"value": "{{MANUFACTURER.USER1.PRIVATE_KEY_DIR_PATH}}",
-									"type": "default"
+							"mode": "raw",
+							"raw": "{\n    \"certificate_path\": \"{{MANUFACTURER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{MANUFACTURER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://localhost:8080/wallet/add/manufacturer",
@@ -50,19 +44,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "certificate_path",
-									"value": "{{DISTRIBUTOR.USER1.CERTIFICATE_PATH}}",
-									"type": "default"
-								},
-								{
-									"key": "privatekey_dirpath",
-									"value": "{{DISTRIBUTOR.USER1.PRIVATE_KEY_DIR_PATH}}",
-									"type": "default"
+							"mode": "raw",
+							"raw": "{\n    \"certificate_path\": \"{{DISTRIBUTOR.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{DISTRIBUTOR.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://localhost:8080/wallet/add/distributor",
@@ -86,19 +74,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "certificate_path",
-									"value": "{{RETAILER.USER1.CERTIFICATE_PATH}}",
-									"type": "default"
-								},
-								{
-									"key": "privatekey_dirpath",
-									"value": "{{RETAILER.USER1.PRIVATE_KEY_DIR_PATH}}",
-									"type": "default"
+							"mode": "raw",
+							"raw": "{\n    \"certificate_path\": \"{{RETAILER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{RETAILER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://localhost:8080/wallet/add/retailer",
@@ -122,19 +104,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "certificate_Path",
-									"value": "{{CONSUMER.USER1.CERTIFICATE_PATH}}",
-									"type": "default"
-								},
-								{
-									"key": "privateKey_DirPath",
-									"value": "{{CONSUMER.USER1.PRIVATE_KEY_DIR_PATH}}",
-									"type": "default"
+							"mode": "raw",
+							"raw": "{\n    \"certificate_path\": \"{{CONSUMER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{CONSUMER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://localhost:8080/wallet/add/consumer",
@@ -158,19 +134,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "certificate_path",
-									"value": "{{TRANSPORTER.USER1.CERTIFICATE_PATH}}",
-									"type": "default"
-								},
-								{
-									"key": "privatekey_dirpath",
-									"value": "{{TRANSPORTER.USER1.PRIVATE_KEY_DIR_PATH}}",
-									"type": "default"
+							"mode": "raw",
+							"raw": "{\n    \"certificate_path\": \"{{TRANSPORTER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{TRANSPORTER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://localhost:8080/wallet/add/transporter",
@@ -202,29 +172,13 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "company_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
-										},
-										{
-											"key": "company_name",
-											"value": "{{MANUFACTURER.SUN_PHARMA.COMPANY_NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "location",
-											"value": "{{MANUFACTURER.SUN_PHARMA.LOCATION}}",
-											"type": "default"
-										},
-										{
-											"key": "organization_role",
-											"value": "{{ORGANIZATION_ROLE.MANUFACTURER}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\",\n    \"company_name\": \"{{MANUFACTURER.SUN_PHARMA.COMPANY_NAME}}\",\n    \"location\": \"{{MANUFACTURER.SUN_PHARMA.LOCATION}}\",\n    \"organization_role\": \"{{ORGANIZATION_ROLE.MANUFACTURER}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
 									"raw": "http://localhost:8080/common/registerCompany",
@@ -247,29 +201,13 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "company_crn",
-											"value": "{{DISTRIBUTOR.DVIJAY_PHARMA.CRN}}",
-											"type": "default"
-										},
-										{
-											"key": "company_name",
-											"value": "{{DISTRIBUTOR.DVIJAY_PHARMA.COMPANY_NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "location",
-											"value": "{{DISTRIBUTOR.DVIJAY_PHARMA.LOCATION}}",
-											"type": "default"
-										},
-										{
-											"key": "organization_role",
-											"value": "{{ORGANIZATION_ROLE.DISTRIBUTOR}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"company_crn\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.CRN}}\",\n    \"company_name\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.COMPANY_NAME}}\",\n    \"location\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.LOCATION}}\",\n    \"organization_role\": \"{{ORGANIZATION_ROLE.DISTRIBUTOR}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
 									"raw": "http://localhost:8080/common/registerCompany",
@@ -575,19 +513,13 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0001",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\" : \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\" : \"0001\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
 									"raw": "http://localhost:8080/common/view/drug",
@@ -1351,6 +1283,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Kill Server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/kill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kill"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -1401,52 +1352,52 @@
 		},
 		{
 			"key": "MANUFACTURER.USER1.CERTIFICATE_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/signcerts/User1@manufacturer.pharma-network.com-cert.pem",
+			"value": "/home/node/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/signcerts/User1@manufacturer.pharma-network.com-cert.pem",
 			"type": "default"
 		},
 		{
 			"key": "MANUFACTURER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/keystore",
+			"value": "/home/node/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/keystore",
 			"type": "default"
 		},
 		{
 			"key": "DISTRIBUTOR.USER1.CERTIFICATE_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/signcerts/User1@distributor.pharma-network.com-cert.pem",
+			"value": "/home/node/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/signcerts/User1@distributor.pharma-network.com-cert.pem",
 			"type": "default"
 		},
 		{
 			"key": "DISTRIBUTOR.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/keystore",
+			"value": "/home/node/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/keystore",
 			"type": "default"
 		},
 		{
 			"key": "RETAILER.USER1.CERTIFICATE_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/signcerts/User1@retailer.pharma-network.com-cert.pem",
+			"value": "/home/node/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/signcerts/User1@retailer.pharma-network.com-cert.pem",
 			"type": "default"
 		},
 		{
 			"key": "RETAILER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/keystore",
+			"value": "/home/node/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/keystore",
 			"type": "default"
 		},
 		{
 			"key": "CONSUMER.USER1.CERTIFICATE_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/signcerts/User1@consumer.pharma-network.com-cert.pem",
+			"value": "/home/node/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/signcerts/User1@consumer.pharma-network.com-cert.pem",
 			"type": "default"
 		},
 		{
 			"key": "CONSUMER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/keystore",
+			"value": "/home/node/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/keystore",
 			"type": "default"
 		},
 		{
 			"key": "TRANSPORTER.USER1.CERTIFICATE_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/signcerts/User1@transporter.pharma-network.com-cert.pem",
+			"value": "/home/node/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/signcerts/User1@transporter.pharma-network.com-cert.pem",
 			"type": "default"
 		},
 		{
 			"key": "TRANSPORTER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/mnt/shared/pharma-net/network/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/keystore",
+			"value": "/home/node/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/keystore",
 			"type": "default"
 		},
 		{
