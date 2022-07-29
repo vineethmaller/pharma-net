@@ -50,12 +50,12 @@ class ManufacturerContract extends Contract {
 				if(response.done) {
 
 					let manufacturedDateObject = new Date(manufacturedDate);
-					if(!isValidManufacturedDate(manufacturedDateObject)) {
+					if(!Common.isValidManufacturedDate(manufacturedDateObject)) {
 						return ERRORS.INVALID_MANUFACTURED_DATE;
 					}
 
 					let expiryDateObject = new Date(expiryDate);
-					if(!isValidExpiryDate(expiryDateObject)) {
+					if(!Common.isValidExpiryDate(expiryDateObject)) {
 						return ERRORS.INVALID_EXPIRY_DATE;
 					}
 

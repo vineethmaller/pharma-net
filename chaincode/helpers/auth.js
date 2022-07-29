@@ -20,28 +20,28 @@ class Auth {
     }
 
     static authorizeManufacturerRole(ctx) {
-        authorizeRole(ctx, ROLES.MANUFACTURER);
+        Auth.authorizeRole(ctx, ROLES.MANUFACTURER);
     }
 
     static authorizeDistributorRole(ctx) {
-        authorizeRole(ctx, ROLES.DISTRIBUTOR);
+        Auth.authorizeRole(ctx, ROLES.DISTRIBUTOR);
     }
 
     static authorizeRetailerRole(ctx) {
-        authorizeRole(ctx, ROLES.RETAILER);
+        Auth.authorizeRole(ctx, ROLES.RETAILER);
     }
 
     static authorizeConsumerRole(ctx) {
-        authorizeRole(ctx, ROLES.CONSUMER);
+        Auth.authorizeRole(ctx, ROLES.CONSUMER);
     }
 
     static authorizeTransporterRole(ctx) {
-        authorizeRole(ctx, ROLES.TRANSPORTER);
+        Auth.authorizeRole(ctx, ROLES.TRANSPORTER);
     }
 
     static roleExists(_role) {
         return Object.values(ROLES)
-            .find(role => role.mspID === _role);
+            .filter(role => role.mspID === _role).length !== 0;
     }
 
     static organizationRoleExists(organizationRole) {
@@ -49,14 +49,14 @@ class Auth {
 	}
 
 	static getRoleHierarchy(organizationRole) {
-		if(organizationRoleExists(organizationRole)) {
+		if(Auth.organizationRoleExists(organizationRole)) {
 			return ROLES[organizationRole.toUpperCase()].hierarchy;
 		}
 		return undefined;
 	}
 
     static doesOrganizationRoleMatchMSPID(ctx, organizationRole) {
-        if(organizationRoleExists(organizationRole)) {
+        if(Auth.organizationRoleExists(organizationRole)) {
             return ROLES[organizationRole.toUpperCase()].mspID === ctx.clientIdentity.mspId;
         }
         throw new Error(ERRORS.ORGANIZATION_ROLE_NOT_FOUND);

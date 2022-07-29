@@ -13,7 +13,7 @@ async function addDrug(drugName, serialNo, manufacturedDate, expiryDate, company
         console.log('Submitting transaction for adding drug to the inventory');
         const drugObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.ADD_DRUG, drugName, serialNo, manufacturedDate, expiryDate, companyCRN);
 
-        comnsole.log('Response received from network. Parsing...');
+        console.log('Response received from network. Parsing...');
         let drugObject = JSON.parse(drugObjectBuffer.toString());
         
         console.log('Drug is added to the inventory');

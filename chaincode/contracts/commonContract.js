@@ -59,11 +59,11 @@ class CommonContract extends Contract {
 
 					return newCompanyObject;
 				}
-				throw new Error(ERRORS.COMPANY_ALREADY_REGISTERED);
+				throw new Error(ERRORS.COMPANY_ALREADY_REGISTERED + ' Registered Company: ' + companyObjectBuffer.toString());
 			}
 			throw new Error(ERRORS.ORGANIZATION_ROLE_DOES_NOT_MATCH_MSP_ID);
 		}
-		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR + ' Role: ' + ctx.mspId);
+		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}
 
 	/**
@@ -103,7 +103,7 @@ class CommonContract extends Contract {
 					let sellerObject = Utils.bufferToJson(sellerObjectBuffer);
 
 					//Checks if the buyer-seller hierarchy is valid for purchase
-					if(isValidBuyerSellerHierarchy(buyerObject, sellerObject)) {
+					if(Common.isValidBuyerSellerHierarchy(buyerObject, sellerObject)) {
 
 						let purchaseOrderID = await ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.PURCHASE_ORDER, [buyerCRN, drugName]);
 						

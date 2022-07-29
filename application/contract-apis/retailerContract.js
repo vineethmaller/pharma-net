@@ -13,7 +13,7 @@ async function retailDrug(drugName, serialNo, retailerCRN, customerAadhar, organ
         console.log('Submitting transaction for registering retail of drug in the network');
         const drugObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.RETAIL_DRUG, drugName, serialNo, retailerCRN, customerAadhar);
 
-        comnsole.log('Response received from network. Parsing...');
+        console.log('Response received from network. Parsing...');
         let drugObject = JSON.parse(drugObjectBuffer.toString());
         
         console.log('Drug state is updated as sold by retailer');

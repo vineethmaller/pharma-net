@@ -1,6 +1,5 @@
 'use strict';
 
-const { Utils } = require('./utils');
 const { HIERARCHY_LEVELS } = require('../constants');
 
 class Common {
@@ -32,7 +31,7 @@ class Common {
 	 */
 	static isDrugExpired(drugObject) {
 		let currentDate = new Date();
-		return drugObject.expiryDate > currentDate;
+		return drugObject.expiryDate < currentDate;
 	}
 
     /**

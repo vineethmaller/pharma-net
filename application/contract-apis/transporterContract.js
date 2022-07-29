@@ -13,7 +13,7 @@ async function updateShipment(buyerCRN, drugName, transporterCRN, organizationRo
         console.log('Submitting transaction for updating shipment status');
         const shipmentObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.UPDATE_SHIPMENT, buyerCRN, drugName, transporterCRN);
 
-        comnsole.log('Response received from network. Parsing...');
+        console.log('Response received from network. Parsing...');
         let shipmentObject = JSON.parse(shipmentObjectBuffer.toString());
         
         console.log('Shipment status is updated');

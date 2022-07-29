@@ -19,8 +19,6 @@ async function getContractInstance(contractType, organizationRole) {
 
     let connectionOptions = await getConnectionByOrganizationRole(organizationRole)
 
-    console.log(connectionOptions.wallet);
-    console.log(connectionOptions.userName);
     let connectionObject = {
         wallet : connectionOptions.wallet,
         identity : connectionOptions.userName,

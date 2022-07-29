@@ -3,6 +3,7 @@
 const { Contract } = require('fabric-contract-api');
 const { Auth } = require('../helpers/auth');
 const { Utils } = require('../helpers/utils');
+const { Common } = require('../helpers/common');
 const { COMPOSITE_KEY_PREFIXES, ERRORS } = require('../constants');
 
 const CONTRACT_NAME = 'pharmanet.retailercontract';
@@ -50,6 +51,11 @@ class RetailerContract extends Contract {
 
 					//Checks if retailer owns the product
 					if(productObject.owner === retailerID) {
+
+						if(Common.isDrugExpired(productObject)) {
+							throw new Error(ERRORS.DRUG_HAS_EXPIRED);
+						}
+
 						productObject.owner = customerAadhar;
 
 						await ctx.stub.putState(productID, Utils.jsonToBuffer(productObject));

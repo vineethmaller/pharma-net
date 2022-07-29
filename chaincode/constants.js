@@ -42,7 +42,8 @@ const ERRORS = {
     SHIPMENT_NOT_FOUND : 'Shipment is not found in the database',
     TRANSPORTER_DOES_NOT_MATCH : 'This transporter not assigned to the shipment',
     RETAILER_DOES_NOT_MATCH : 'This retailer does not own the product',
-    INCORRECT_ITEM_COUNT_IN_SHIPMENT : 'The quantity requested in purchase order does not match the count of items being shipped'
+    INCORRECT_ITEM_COUNT_IN_SHIPMENT : 'The quantity requested in purchase order does not match the count of items being shipped',
+    DRUG_HAS_EXPIRED : 'The drug has expired and cannot be sold to the consumer'
 };
 
 const COMPOSITE_KEY_PREFIXES = {
