@@ -63,7 +63,8 @@ function askProceed() {
 # Obtain CONTAINER_IDS and remove them
 # TODO Might want to make this optional - could clear other containers
 function clearContainers() {
-  CONTAINER_IDS=$(docker ps -a | awk '($2 ~ /dev-peer.*.pharma-network.*/) {print $1}')
+  ORG=$1
+  CONTAINER_IDS=$(docker ps -a | awk '($2 ~ /dev-peer0.'${ORG}'.pharma-network.*/) {print $1}')
   if [ -z "$CONTAINER_IDS" -o "$CONTAINER_IDS" == " " ]; then
     echo "---- No containers available for deletion ----"
   else
@@ -75,7 +76,8 @@ function clearContainers() {
 # specifically the following images are often left behind:
 # TODO list generated image naming patterns
 function removeUnwantedImages() {
-  DOCKER_IMAGE_IDS=$(docker images | awk '($1 ~ /dev-peer.*.pharma-network.*/) {print $3}')
+  ORG=$1
+  DOCKER_IMAGE_IDS=$(docker images | awk '($1 ~ /dev-peer0.'${ORG}'.pharma-network.*/) {print $3}')
   if [ -z "$DOCKER_IMAGE_IDS" -o "$DOCKER_IMAGE_IDS" == " " ]; then
     echo "---- No images available for deletion ----"
   else
@@ -178,9 +180,17 @@ function networkDown() {
     # Delete any ledger backups
     docker run -v "$PWD":/tmp/pharmachannel --rm hyperledger/fabric-tools:"$IMAGETAG" rm -Rf /tmp/pharmachannel/ledgers-backup
     #Cleanup the chaincode containers
-    clearContainers
+    clearContainers 'manufacturer'
+    clearContainers 'distributor'
+    clearContainers 'retailer'
+    clearContainers 'consumer'
+    clearContainers 'transporter'
     #Cleanup images
-    removeUnwantedImages
+    removeUnwantedImages 'manufacturer'
+    removeUnwantedImages 'distributor'
+    removeUnwantedImages 'retailer'
+    removeUnwantedImages 'consumer'
+    removeUnwantedImages 'transporter'
     # remove orderer block and other channel configuration transactions and certs
     rm -rf channel-artifacts/*.block channel-artifacts/*.tx
   fi
