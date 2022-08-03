@@ -38,46 +38,47 @@ class ManufacturerContract extends Contract {
 		//Checks if the caller has manufacturer role in network
 		if(Auth.authorizeManufacturerRole(ctx)) {
 			
-			let response = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [companyCRN]);
+			let manufacturerIterator = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [companyCRN]);
+			let manufacturer = await manufacturerIterator.next();
+			await manufacturerIterator.close();
 
 			//Checks if the manufacturer is already registered
-			if(!response.done) {
-				let companyID = response.next();
+			if(!manufacturer.value) {
+				throw new Error(ERRORS.COMPANY_IS_NOT_REGISTERED);
+			}
+			
+			let manufacturerID = manufacturer.value.key;
+			let productID = ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.PRODUCT, [drugName, serialNo]);
+			let productObjectBuffer = await ctx.stub.getState(productID);
 
-				response = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.PRODUCT, [serialNo]);
-
-				//Checks if the serial number is already used
-				if(response.done) {
-
-					let manufacturedDateObject = new Date(manufacturedDate);
-					if(!Common.isValidManufacturedDate(manufacturedDateObject)) {
-						return ERRORS.INVALID_MANUFACTURED_DATE;
-					}
-
-					let expiryDateObject = new Date(expiryDate);
-					if(!Common.isValidExpiryDate(expiryDateObject)) {
-						return ERRORS.INVALID_EXPIRY_DATE;
-					}
-
-					let productID = ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.PRODUCT, [drugName, serialNo]);
-
-					let newDrugObject = {
-						productID : productID,
-						name : drugName,
-						manufacturer : companyID,
-						manufacturingDate : new Date(manufacturedDate),
-						expiryDate : new Date(expiryDate),
-						owner : companyID,
-						shipment : []
-					}
-
-					await ctx.stub.putState(productID, Utils.jsonToBuffer(newDrugObject));
-
-					return newDrugObject;
-				}
+			//Checks if the serial number is already used
+			if(productObjectBuffer.length !== 0) {
 				throw new Error(ERRORS.SERIAL_NO_IS_ALREADY_USED);
 			}
-			throw new Error(ERRORS.COMPANY_IS_NOT_REGISTERED);
+
+			let manufacturedDateObject = new Date(manufacturedDate);
+			if(!Common.isValidManufacturedDate(manufacturedDateObject)) {
+				throw new Error(ERRORS.INVALID_MANUFACTURED_DATE);
+			}
+
+			let expiryDateObject = new Date(expiryDate);
+			if(!Common.isValidExpiryDate(expiryDateObject)) {
+				throw new Error(ERRORS.INVALID_EXPIRY_DATE);
+			}
+
+			let newDrugObject = {
+				productID : productID,
+				name : drugName,
+				manufacturer : manufacturerID,
+				manufacturingDate : manufacturedDate,
+				expiryDate : expiryDate,
+				owner : manufacturerID,
+				shipment : []
+			}
+
+			await ctx.stub.putState(productID, Utils.jsonToBuffer(newDrugObject));
+
+			return newDrugObject;
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}

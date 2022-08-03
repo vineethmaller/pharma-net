@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b67b5353-9872-4058-b82f-eda842b31872",
+		"_postman_id": "65160be5-f592-48ee-a3a2-92cb13a9b5a4",
 		"name": "Pharmanet API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"certificate_path\": \"{{MANUFACTURER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{MANUFACTURER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"raw": "{\r\n    \"certificate_path\": \"{{MANUFACTURER.USER1.CERTIFICATE_PATH}}\",\r\n    \"privatekey_dirpath\": \"{{MANUFACTURER.USER1.PRIVATE_KEY_DIR_PATH}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23,12 +23,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/wallet/add/manufacturer",
-							"protocol": "http",
+							"raw": "{{DOMAIN}}/wallet/add/manufacturer",
 							"host": [
-								"localhost"
+								"{{DOMAIN}}"
 							],
-							"port": "8080",
 							"path": [
 								"wallet",
 								"add",
@@ -45,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"certificate_path\": \"{{DISTRIBUTOR.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{DISTRIBUTOR.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"raw": "{\r\n    \"certificate_path\": \"{{DISTRIBUTOR.USER1.CERTIFICATE_PATH}}\",\r\n    \"privatekey_dirpath\": \"{{DISTRIBUTOR.USER1.PRIVATE_KEY_DIR_PATH}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -53,12 +51,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/wallet/add/distributor",
-							"protocol": "http",
+							"raw": "{{DOMAIN}}/wallet/add/distributor",
 							"host": [
-								"localhost"
+								"{{DOMAIN}}"
 							],
-							"port": "8080",
 							"path": [
 								"wallet",
 								"add",
@@ -75,7 +71,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"certificate_path\": \"{{RETAILER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{RETAILER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"raw": "{\r\n    \"certificate_path\": \"{{RETAILER.USER1.CERTIFICATE_PATH}}\",\r\n    \"privatekey_dirpath\": \"{{RETAILER.USER1.PRIVATE_KEY_DIR_PATH}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,12 +79,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/wallet/add/retailer",
-							"protocol": "http",
+							"raw": "{{DOMAIN}}/wallet/add/retailer",
 							"host": [
-								"localhost"
+								"{{DOMAIN}}"
 							],
-							"port": "8080",
 							"path": [
 								"wallet",
 								"add",
@@ -105,7 +99,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"certificate_path\": \"{{CONSUMER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{CONSUMER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"raw": "{\r\n    \"certificate_path\": \"{{CONSUMER.USER1.CERTIFICATE_PATH}}\",\r\n    \"privatekey_dirpath\": \"{{CONSUMER.USER1.PRIVATE_KEY_DIR_PATH}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -113,12 +107,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/wallet/add/consumer",
-							"protocol": "http",
+							"raw": "{{DOMAIN}}/wallet/add/consumer",
 							"host": [
-								"localhost"
+								"{{DOMAIN}}"
 							],
-							"port": "8080",
 							"path": [
 								"wallet",
 								"add",
@@ -135,7 +127,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"certificate_path\": \"{{TRANSPORTER.USER1.CERTIFICATE_PATH}}\",\n    \"privatekey_dirpath\": \"{{TRANSPORTER.USER1.PRIVATE_KEY_DIR_PATH}}\"\n}",
+							"raw": "{\r\n    \"certificate_path\": \"{{TRANSPORTER.USER1.CERTIFICATE_PATH}}\",\r\n    \"privatekey_dirpath\": \"{{TRANSPORTER.USER1.PRIVATE_KEY_DIR_PATH}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -143,12 +135,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/wallet/add/transporter",
-							"protocol": "http",
+							"raw": "{{DOMAIN}}/wallet/add/transporter",
 							"host": [
-								"localhost"
+								"{{DOMAIN}}"
 							],
-							"port": "8080",
 							"path": [
 								"wallet",
 								"add",
@@ -173,7 +163,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\",\n    \"company_name\": \"{{MANUFACTURER.SUN_PHARMA.COMPANY_NAME}}\",\n    \"location\": \"{{MANUFACTURER.SUN_PHARMA.LOCATION}}\",\n    \"organization_role\": \"{{ORGANIZATION_ROLE.MANUFACTURER}}\"\n}",
+									"raw": "{\r\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\",\r\n    \"company_name\": \"{{MANUFACTURER.SUN_PHARMA.COMPANY_NAME}}\",\r\n    \"location\": \"{{MANUFACTURER.SUN_PHARMA.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.MANUFACTURER}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -181,12 +171,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/registerCompany",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/registerCompany",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"registerCompany"
@@ -202,7 +190,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_crn\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.CRN}}\",\n    \"company_name\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.COMPANY_NAME}}\",\n    \"location\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.LOCATION}}\",\n    \"organization_role\": \"{{ORGANIZATION_ROLE.DISTRIBUTOR}}\"\n}",
+									"raw": "{\r\n    \"company_crn\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.CRN}}\",\r\n    \"company_name\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.COMPANY_NAME}}\",\r\n    \"location\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.DISTRIBUTOR}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -210,12 +198,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/registerCompany",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/registerCompany",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"registerCompany"
@@ -230,37 +216,19 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "company_crn",
-											"value": "{{RETAILER.APOLLO_PHARMACY.CRN}}",
-											"type": "default"
-										},
-										{
-											"key": "company_name",
-											"value": "{{RETAILER.APOLLO_PHARMACY.COMPANY_NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "location",
-											"value": "{{RETAILER.APOLLO_PHARMACY.LOCATION}}",
-											"type": "default"
-										},
-										{
-											"key": "organization_role",
-											"value": "{{ORGANIZATION_ROLE.RETAILER}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"company_crn\": \"{{RETAILER.APOLLO_PHARMACY.CRN}}\",\r\n    \"company_name\": \"{{RETAILER.APOLLO_PHARMACY.COMPANY_NAME}}\",\r\n    \"location\": \"{{RETAILER.APOLLO_PHARMACY.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.RETAILER}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/registerCompany",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/registerCompany",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"registerCompany"
@@ -275,37 +243,19 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "company_crn",
-											"value": "{{TRANSPORTER.BLUE_DART.CRN}}",
-											"type": "default"
-										},
-										{
-											"key": "company_name",
-											"value": "{{TRANSPORTER.BLUE_DART.COMPANY_NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "location",
-											"value": "{{TRANSPORTER.BLUE_DART.LOCATION}}",
-											"type": "default"
-										},
-										{
-											"key": "organization_role",
-											"value": "{{ORGANIZATION_ROLE.TRANSPORTER}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"company_crn\": \"{{TRANSPORTER.BLUE_DART.CRN}}\",\r\n    \"company_name\": \"{{TRANSPORTER.BLUE_DART.COMPANY_NAME}}\",\r\n    \"location\": \"{{TRANSPORTER.BLUE_DART.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.TRANSPORTER}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/registerCompany",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/registerCompany",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"registerCompany"
@@ -331,37 +281,19 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "buyer_crn",
-											"value": "{{DISTRIBUTOR.DVIJAY_PHARMA.CRN}}",
-											"type": "default"
-										},
-										{
-											"key": "seller_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
-										},
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "quantity",
-											"value": "5",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"buyer_crn\": \"{{DISTRIBUTOR.DVIJAY_PHARMA.CRN}}\",\r\n    \"seller_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\",\r\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\r\n    \"quantity\": \"5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/createPO",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/createPO",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"createPO"
@@ -514,7 +446,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drug_name\" : \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\" : \"0001\"\n}",
+									"raw": "{\r\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\r\n    \"serial_no\": \"0001\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -522,12 +454,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/view/drug",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/view/drug",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"view",
@@ -549,32 +479,24 @@
 								"header": [
 									{
 										"key": "organization_role",
-										"value": "manufacturer",
+										"value": "{{ORGANIZATION_ROLE.MANUFACTURER}}",
 										"type": "default"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0001",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\r\n    \"serial_no\": \"0001\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/view/history",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/view/history",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"view",
@@ -591,32 +513,24 @@
 								"header": [
 									{
 										"key": "organization_role",
-										"value": "distributor",
+										"value": "{{ORGANIZATION_ROLE.DISTRIBUTOR}}",
 										"type": "default"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_ame",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0002",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\r\n    \"serial_no\": \"0002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/view/history",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/view/history",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"view",
@@ -633,32 +547,24 @@
 								"header": [
 									{
 										"key": "organization_role",
-										"value": "retailer",
+										"value": "{{ORGANIZATION_ROLE.RETAILER}}",
 										"type": "default"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0003",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\r\n    \"serial_no\": \"0003\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/view/history",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/view/history",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"view",
@@ -675,32 +581,24 @@
 								"header": [
 									{
 										"key": "organization_role",
-										"value": "consumer",
+										"value": "{{ORGANIZATION_ROLE.CONSUMER}}",
 										"type": "default"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0004",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\r\n    \"serial_no\": \"0004\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/view/history",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/view/history",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"view",
@@ -717,32 +615,24 @@
 								"header": [
 									{
 										"key": "organization_role",
-										"value": "transporter",
+										"value": "{{ORGANIZATION_ROLE.TRANSPORTER}}",
 										"type": "default"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0005",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\r\n    \"serial_no\": \"0005\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/common/view/history",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/common/view/history",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"common",
 										"view",
@@ -774,42 +664,19 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0001",
-											"type": "default"
-										},
-										{
-											"key": "manufactured_date",
-											"value": "01/01/2022",
-											"type": "default"
-										},
-										{
-											"key": "expiry_date",
-											"value": "31/12/2024",
-											"type": "default"
-										},
-										{
-											"key": "company_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\": \"0001\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"31/12/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/manufacturer/addDrug",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/manufacturer/addDrug",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"manufacturer",
 										"addDrug"
@@ -830,42 +697,19 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0002",
-											"type": "default"
-										},
-										{
-											"key": "manufactured_date",
-											"value": "01/01/2022",
-											"type": "default"
-										},
-										{
-											"key": "expiry_date",
-											"value": "31/12/2024",
-											"type": "default"
-										},
-										{
-											"key": "company_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\": \"0002\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"31/12/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/manufacturer/addDrug",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/manufacturer/addDrug",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"manufacturer",
 										"addDrug"
@@ -886,42 +730,19 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0003",
-											"type": "default"
-										},
-										{
-											"key": "manufactured_date",
-											"value": "01/01/2022",
-											"type": "default"
-										},
-										{
-											"key": "expiry_date",
-											"value": "31/12/2024",
-											"type": "default"
-										},
-										{
-											"key": "company_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\": \"0003\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"31/12/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/manufacturer/addDrug",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/manufacturer/addDrug",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"manufacturer",
 										"addDrug"
@@ -942,42 +763,19 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0004",
-											"type": "default"
-										},
-										{
-											"key": "manufactured_date",
-											"value": "01/01/2022",
-											"type": "default"
-										},
-										{
-											"key": "expiry_date",
-											"value": "31/12/2024",
-											"type": "default"
-										},
-										{
-											"key": "company_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\": \"0004\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"31/12/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/manufacturer/addDrug",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/manufacturer/addDrug",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"manufacturer",
 										"addDrug"
@@ -998,42 +796,19 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0005",
-											"type": "default"
-										},
-										{
-											"key": "manufactured_date",
-											"value": "01/01/2022",
-											"type": "default"
-										},
-										{
-											"key": "expiry_date",
-											"value": "31/12/2024",
-											"type": "default"
-										},
-										{
-											"key": "company_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\": \"0005\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"31/12/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/manufacturer/addDrug",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/manufacturer/addDrug",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"manufacturer",
 										"addDrug"
@@ -1054,42 +829,19 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "drug_name",
-											"value": "{{DRUG.DOLAMIDE.NAME}}",
-											"type": "default"
-										},
-										{
-											"key": "serial_no",
-											"value": "0006",
-											"type": "default"
-										},
-										{
-											"key": "manufactured_date",
-											"value": "01/01/2022",
-											"type": "default"
-										},
-										{
-											"key": "expiry_date",
-											"value": "31/12/2024",
-											"type": "default"
-										},
-										{
-											"key": "company_crn",
-											"value": "{{MANUFACTURER.SUN_PHARMA.CRN}}",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"{{DRUG.DOLAMIDE.NAME}}\",\n    \"serial_no\": \"0006\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"31/12/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/manufacturer/addDrug",
-									"protocol": "http",
+									"raw": "{{DOMAIN}}/manufacturer/addDrug",
 									"host": [
-										"localhost"
+										"{{DOMAIN}}"
 									],
-									"port": "8080",
 									"path": [
 										"manufacturer",
 										"addDrug"
@@ -1271,33 +1023,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/health",
-					"protocol": "http",
+					"raw": "{{DOMAIN}}/health",
 					"host": [
-						"localhost"
+						"{{DOMAIN}}"
 					],
-					"port": "8080",
 					"path": [
 						"health"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Kill Server",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/kill",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"kill"
 					]
 				}
 			},
@@ -1327,148 +1058,123 @@
 	"variable": [
 		{
 			"key": "ORGANIZATION_ROLE.MANUFACTURER",
-			"value": "manufacturer",
-			"type": "default"
+			"value": "manufacturer"
 		},
 		{
 			"key": "ORGANIZATION_ROLE.DISTRIBUTOR",
-			"value": "distributor",
-			"type": "default"
+			"value": "distributor"
 		},
 		{
 			"key": "ORGANIZATION_ROLE.RETAILER",
-			"value": "retailer",
-			"type": "default"
+			"value": "retailer"
 		},
 		{
 			"key": "ORGANIZATION_ROLE.CONSUMER",
-			"value": "consumer",
-			"type": "default"
+			"value": "consumer"
 		},
 		{
 			"key": "ORGANIZATION_ROLE.TRANSPORTER",
-			"value": "transporter",
-			"type": "default"
+			"value": "transporter"
 		},
 		{
 			"key": "MANUFACTURER.USER1.CERTIFICATE_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/signcerts/User1@manufacturer.pharma-network.com-cert.pem",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/signcerts/User1@manufacturer.pharma-network.com-cert.pem"
 		},
 		{
 			"key": "MANUFACTURER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/keystore",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/manufacturer.pharma-network.com/users/User1@manufacturer.pharma-network.com/msp/keystore"
 		},
 		{
 			"key": "DISTRIBUTOR.USER1.CERTIFICATE_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/signcerts/User1@distributor.pharma-network.com-cert.pem",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/signcerts/User1@distributor.pharma-network.com-cert.pem"
 		},
 		{
 			"key": "DISTRIBUTOR.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/keystore",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/distributor.pharma-network.com/users/User1@distributor.pharma-network.com/msp/keystore"
 		},
 		{
 			"key": "RETAILER.USER1.CERTIFICATE_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/signcerts/User1@retailer.pharma-network.com-cert.pem",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/signcerts/User1@retailer.pharma-network.com-cert.pem"
 		},
 		{
 			"key": "RETAILER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/keystore",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/retailer.pharma-network.com/users/User1@retailer.pharma-network.com/msp/keystore"
 		},
 		{
 			"key": "CONSUMER.USER1.CERTIFICATE_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/signcerts/User1@consumer.pharma-network.com-cert.pem",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/signcerts/User1@consumer.pharma-network.com-cert.pem"
 		},
 		{
 			"key": "CONSUMER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/keystore",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/consumer.pharma-network.com/users/User1@consumer.pharma-network.com/msp/keystore"
 		},
 		{
 			"key": "TRANSPORTER.USER1.CERTIFICATE_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/signcerts/User1@transporter.pharma-network.com-cert.pem",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/signcerts/User1@transporter.pharma-network.com-cert.pem"
 		},
 		{
 			"key": "TRANSPORTER.USER1.PRIVATE_KEY_DIR_PATH",
-			"value": "/home/node/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/keystore",
-			"type": "default"
+			"value": "/home/node/crypto-config/peerOrganizations/transporter.pharma-network.com/users/User1@transporter.pharma-network.com/msp/keystore"
 		},
 		{
 			"key": "MANUFACTURER.SUN_PHARMA.COMPANY_NAME",
-			"value": "Sun Pharmaceutical Industries Ltd",
-			"type": "default"
+			"value": "Sun Pharmaceutical Industries Ltd"
 		},
 		{
 			"key": "MANUFACTURER.SUN_PHARMA.CRN",
-			"value": "19050",
-			"type": "default"
+			"value": "19050"
 		},
 		{
 			"key": "MANUFACTURER.SUN_PHARMA.LOCATION",
-			"value": "SPARC, TANDALJA, VADODARA Vadodara GJ 390012 IN",
-			"type": "default"
+			"value": "SPARC, TANDALJA, VADODARA Vadodara GJ 390012 IN"
 		},
 		{
 			"key": "DISTRIBUTOR.DVIJAY_PHARMA.COMPANY_NAME",
-			"value": "Dvijay Pharma Pvt",
-			"type": "default"
+			"value": "Dvijay Pharma Pvt"
 		},
 		{
 			"key": "DISTRIBUTOR.DVIJAY_PHARMA.CRN",
-			"value": "140762",
-			"type": "default"
+			"value": "140762"
 		},
 		{
 			"key": "DISTRIBUTOR.DVIJAY_PHARMA.LOCATION",
-			"value": "D VIJAY HOUSE, SR NO 645/A/22, F P No.197 TPS II OLD AGRA ROAD Nr HOTEL SAMRAT, CBS NASHIK Nashik MH 422002 IN",
-			"type": "default"
+			"value": "D VIJAY HOUSE, SR NO 645/A/22, F P No.197 TPS II OLD AGRA ROAD Nr HOTEL SAMRAT, CBS NASHIK Nashik MH 422002 IN"
 		},
 		{
 			"key": "TRANSPORTER.BLUE_DART.COMPANY_NAME",
-			"value": "Blue Dart Express Ltd",
-			"type": "default"
+			"value": "Blue Dart Express Ltd"
 		},
 		{
 			"key": "TRANSPORTER.BLUE_DART.CRN",
-			"value": "61074",
-			"type": "default"
+			"value": "61074"
 		},
 		{
 			"key": "TRANSPORTER.BLUE_DART.LOCATION",
-			"value": "BLUE DART CENTRESAHAR AIRPORT ROAD ANDHERI (EAST) MUMBAI MH 400099 IN",
-			"type": "default"
+			"value": "BLUE DART CENTRESAHAR AIRPORT ROAD ANDHERI (EAST) MUMBAI MH 400099 IN"
 		},
 		{
 			"key": "RETAILER.APOLLO_PHARMACY.COMPANY_NAME",
-			"value": "Apollo Pharmacies Ltd",
-			"type": "default"
+			"value": "Apollo Pharmacies Ltd"
 		},
 		{
 			"key": "RETAILER.APOLLO_PHARMACY.CRN",
-			"value": "111328",
-			"type": "default"
+			"value": "111328"
 		},
 		{
 			"key": "RETAILER.APOLLO_PHARMACY.LOCATION",
-			"value": "No.19, Bishop Gardens, Rajaannamalai puram, Chennai Chennai TN 600028 IN",
-			"type": "default"
+			"value": "No.19, Bishop Gardens, Rajaannamalai puram, Chennai Chennai TN 600028 IN"
 		},
 		{
 			"key": "DRUG.DOLAMIDE.NAME",
-			"value": "Dolamide",
-			"type": "default"
+			"value": "Dolamide"
 		},
 		{
 			"key": "DRUG.ALTRADAY.NAME",
-			"value": "Altraday",
-			"type": "default"
+			"value": "Altraday"
+		},
+		{
+			"key": "DOMAIN",
+			"value": "http://localhost:8080"
 		}
 	]
 }

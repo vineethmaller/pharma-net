@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "2d3d8bea-575a-4916-afb4-e778e80e935d",
+		"name": "Initiation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Company",
+			"item": [
+				{
+					"name": "Register Company: Manufacturer - Sun Pharma",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\",\r\n    \"company_name\": \"{{MANUFACTURER.SUN_PHARMA.COMPANY_NAME}}\",\r\n    \"location\": \"{{MANUFACTURER.SUN_PHARMA.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.MANUFACTURER}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/common/registerCompany",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"common",
+								"registerCompany"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Company: Distributor - VG Pharma",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_crn\": \"{{DISTRIBUTOR.VG_PHARMA.CRN}}\",\r\n    \"company_name\": \"{{DISTRIBUTOR.VG_PHARMA.COMPANY_NAME}}\",\r\n    \"location\": \"{{DISTRIBUTOR.VG_PHARMA.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.DISTRIBUTOR}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/common/registerCompany",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"common",
+								"registerCompany"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Company: Retailer - Upgrad",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_crn\": \"{{RETAILER.UPGRAD.CRN}}\",\r\n    \"company_name\": \"{{RETAILER.UPGRAD.COMPANY_NAME}}\",\r\n    \"location\": \"{{RETAILER.UPGRAD.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.RETAILER}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/common/registerCompany",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"common",
+								"registerCompany"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Company: Transporter - FedEx",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_crn\": \"{{TRANSPORTER.FEDEX.CRN}}\",\r\n    \"company_name\": \"{{TRANSPORTER.FEDEX.COMPANY_NAME}}\",\r\n    \"location\": \"{{TRANSPORTER.FEDEX.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.TRANSPORTER}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/common/registerCompany",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"common",
+								"registerCompany"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Company: Transporter - Blue Dart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_crn\": \"{{TRANSPORTER.BLUE_DART.CRN}}\",\r\n    \"company_name\": \"{{TRANSPORTER.BLUE_DART.COMPANY_NAME}}\",\r\n    \"location\": \"{{TRANSPORTER.BLUE_DART.LOCATION}}\",\r\n    \"organization_role\": \"{{ORGANIZATION_ROLE.TRANSPORTER}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/common/registerCompany",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"common",
+								"registerCompany"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Add Drug",
+			"item": [
+				{
+					"name": "Add Drug - Paracetamol - Strip 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization_role",
+								"value": "{{ORGANIZATION_ROLE.MANUFACTURER}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drug_name\": \"{{DRUG.PARACETAMOL.NAME}}\",\n    \"serial_no\": \"001\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"12/30/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/manufacturer/addDrug",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"manufacturer",
+								"addDrug"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Drug - Paracetamol - Strip 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization_role",
+								"value": "{{ORGANIZATION_ROLE.MANUFACTURER}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drug_name\": \"{{DRUG.PARACETAMOL.NAME}}\",\n    \"serial_no\": \"002\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"12/31/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/manufacturer/addDrug",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"manufacturer",
+								"addDrug"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Drug - Paracetamol - Strip 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization_role",
+								"value": "{{ORGANIZATION_ROLE.MANUFACTURER}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drug_name\": \"{{DRUG.PARACETAMOL.NAME}}\",\n    \"serial_no\": \"003\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"12/31/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/manufacturer/addDrug",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"manufacturer",
+								"addDrug"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Drug - Paracetamol - Strip 4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization_role",
+								"value": "{{ORGANIZATION_ROLE.MANUFACTURER}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drug_name\": \"{{DRUG.PARACETAMOL.NAME}}\",\n    \"serial_no\": \"004\",\n    \"manufactured_date\": \"01/01/2022\",\n    \"expiry_date\": \"12/31/2024\",\n    \"company_crn\": \"{{MANUFACTURER.SUN_PHARMA.CRN}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/manufacturer/addDrug",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"manufacturer",
+								"addDrug"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "MANUFACTURER.SUN_PHARMA.COMPANY_NAME",
+			"value": "Sun Pharma",
+			"type": "default"
+		},
+		{
+			"key": "MANUFACTURER.SUN_PHARMA.CRN",
+			"value": "MAN001",
+			"type": "default"
+		},
+		{
+			"key": "MANUFACTURER.SUN_PHARMA.LOCATION",
+			"value": "Chennai",
+			"type": "default"
+		},
+		{
+			"key": "DISTRIBUTOR.VG_PHARMA.COMPANY_NAME",
+			"value": "VG Pharma",
+			"type": "default"
+		},
+		{
+			"key": "DISTRIBUTOR.VG_PHARMA.CRN",
+			"value": "DIST001",
+			"type": "default"
+		},
+		{
+			"key": "DISTRIBUTOR.VG_PHARMA.LOCATION",
+			"value": "Vizag",
+			"type": "default"
+		},
+		{
+			"key": "RETAILER.UPGRAD.COMPANY_NAME",
+			"value": "Upgrad",
+			"type": "default"
+		},
+		{
+			"key": "RETAILER.UPGRAD.CRN",
+			"value": "RET002",
+			"type": "default"
+		},
+		{
+			"key": "RETAILER.UPGRAD.LOCATION",
+			"value": "Mumbai",
+			"type": "default"
+		},
+		{
+			"key": "TRANSPORTER.BLUE_DART.COMPANY_NAME",
+			"value": "Blue Dart",
+			"type": "default"
+		},
+		{
+			"key": "TRANSPORTER.BLUE_DART.CRN",
+			"value": "TRA002",
+			"type": "default"
+		},
+		{
+			"key": "TRANSPORTER.BLUE_DART.LOCATION",
+			"value": "Bangalore",
+			"type": "default"
+		},
+		{
+			"key": "TRANSPORTER.FEDEX.COMPANY_NAME",
+			"value": "FedEx",
+			"type": "default"
+		},
+		{
+			"key": "TRANSPORTER.FEDEX.CRN",
+			"value": "TRA001",
+			"type": "default"
+		},
+		{
+			"key": "TRANSPORTER.FEDEX.LOCATION",
+			"value": "Delhi",
+			"type": "default"
+		},
+		{
+			"key": "DRUG.PARACETAMOL.NAME",
+			"value": "Paracetamol",
+			"type": "default"
+		},
+		{
+			"key": "ORGANIZATION_ROLE.DISTRIBUTOR",
+			"value": "distributor",
+			"type": "default"
+		},
+		{
+			"key": "ORGANIZATION_ROLE.MANUFACTURER",
+			"value": "manufacturer",
+			"type": "default"
+		},
+		{
+			"key": "ORGANIZATION_ROLE.RETAILER",
+			"value": "retailer",
+			"type": "default"
+		},
+		{
+			"key": "ORGANIZATION_ROLE.CONSUMER",
+			"value": "consumer",
+			"type": "default"
+		},
+		{
+			"key": "ORGANIZATION_ROLE.TRANSPORTER",
+			"value": "transporter",
+			"type": "default"
+		},
+		{
+			"key": "DOMAIN",
+			"value": "http://localhost:8080",
+			"type": "default"
+		}
+	]
+}

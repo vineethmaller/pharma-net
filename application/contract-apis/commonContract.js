@@ -19,7 +19,7 @@ async function registerCompany(companyCRN, companyName, location, organizationRo
         console.log('Company is registered in network');
         return companyObject;
     } catch(error) {
-        console.log('Error: ${error}');
+        console.log('Error: ' + error);
         throw error;
     } finally {
         contractHelper.disconnect();
@@ -55,7 +55,7 @@ async function createShipment(buyerCRN, drugName, listOfAssets, transporterCRN, 
         console.log('Connected to smart contract');
 
         console.log('Submitting transaction for creating shipment');
-        const shipmentObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.CREATE_SHIPMENT, buyerCRN, drugName, listOfAssets, transporterCRN);
+        const shipmentObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.CREATE_SHIPMENT, buyerCRN, drugName, listOfAssets.toString(), transporterCRN);
 
         console.log('Response received from network. Parsing...');
         let shipmentObject = JSON.parse(shipmentObjectBuffer.toString());

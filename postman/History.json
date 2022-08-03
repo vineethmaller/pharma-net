@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "bed75d19-2ebd-479e-9390-3656161d31bf",
+		"name": "History",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "View Drug",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "organization_role",
+						"value": "consumer",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"drug_name\": \"Paracetamol\",\r\n    \"serial_no\": \"001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DOMAIN}}/common/view/drug",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"common",
+						"view",
+						"drug"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View History",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "organization_role",
+						"value": "consumer",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"drug_name\": \"Paracetamol\",\r\n    \"serial_no\": \"001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DOMAIN}}/common/view/history",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"common",
+						"view",
+						"history"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "DOMAIN",
+			"value": "http://localhost:8080",
+			"type": "default"
+		}
+	]
+}

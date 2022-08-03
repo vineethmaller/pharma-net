@@ -5,38 +5,34 @@ const { ROLES, ERRORS } = require('../constants');
 class Auth {
 
     static authorizeRole(ctx, _role) {
-        if(ctx.clientIdentity.mspId !== _role) {
-            throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
-        }
-    }
-    
-    static authorizeRole(ctx, ...roles) {
-        for(let role in roles) {
-            if(ctx.clientIdentity.mspId === role.mspID) {
-                return true;
-            }
+        if(ctx.clientIdentity.mspId === _role.mspID) {
+            return true;
         }
         return false;
     }
+    
+    static authorizeWithRoles(ctx, roles) {
+        return roles.filter(role => ctx.clientIdentity.mspId === role.mspID).length === 1;
+    }
 
     static authorizeManufacturerRole(ctx) {
-        Auth.authorizeRole(ctx, ROLES.MANUFACTURER);
+        return Auth.authorizeRole(ctx, ROLES.MANUFACTURER);
     }
 
     static authorizeDistributorRole(ctx) {
-        Auth.authorizeRole(ctx, ROLES.DISTRIBUTOR);
+        return Auth.authorizeRole(ctx, ROLES.DISTRIBUTOR);
     }
 
     static authorizeRetailerRole(ctx) {
-        Auth.authorizeRole(ctx, ROLES.RETAILER);
+        return Auth.authorizeRole(ctx, ROLES.RETAILER);
     }
 
     static authorizeConsumerRole(ctx) {
-        Auth.authorizeRole(ctx, ROLES.CONSUMER);
+        return Auth.authorizeRole(ctx, ROLES.CONSUMER);
     }
 
     static authorizeTransporterRole(ctx) {
-        Auth.authorizeRole(ctx, ROLES.TRANSPORTER);
+        return Auth.authorizeRole(ctx, ROLES.TRANSPORTER);
     }
 
     static roleExists(_role) {

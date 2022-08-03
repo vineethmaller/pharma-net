@@ -35,38 +35,43 @@ class RetailerContract extends Contract {
 	 */
 	async retailDrug(ctx, drugName, serialNo, retailerCRN, customerAadhar) {
 
-		//Checks if the caller has transporter role in network
-		if(Auth.authorizeTransporterRole(ctx)) {
-			let response = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [retailerCRN]);
+		//Checks if the caller has retailer role in network
+		if(Auth.authorizeRetailerRole(ctx)) {
+			let retailerIterator = await ctx.stub.getStateByPartialCompositeKey(COMPOSITE_KEY_PREFIXES.COMPANY, [retailerCRN]);
+			let retailer = await retailerIterator.next();
+			await retailerIterator.close();
 
 			//Checks if retailer exists
-			if(!response.done) {
-				let retailerID = response.next();
-				let productID = await ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.PRODUCT, [drugName, serialNo]);
-				let productObjectBuffer = await ctx.stub.getState(productID);
+			if(!retailer.value) {
+				throw new Error(ERRORS.RETAILER_IS_NOT_REGISTERED);
+			}
 
-				//Checks if product exists in network
-				if(productObjectBuffer.length !== 0) {
-					let productObject = Utils.bufferToJson(productObjectBuffer);
+			let retailerID = retailer.value.key;
+			let productID = await ctx.stub.createCompositeKey(COMPOSITE_KEY_PREFIXES.PRODUCT, [drugName, serialNo]);
+			let productObjectBuffer = await ctx.stub.getState(productID);
 
-					//Checks if retailer owns the product
-					if(productObject.owner === retailerID) {
-
-						if(Common.isDrugExpired(productObject)) {
-							throw new Error(ERRORS.DRUG_HAS_EXPIRED);
-						}
-
-						productObject.owner = customerAadhar;
-
-						await ctx.stub.putState(productID, Utils.jsonToBuffer(productObject));
-
-						return productObject;
-					}
-					throw new Error(ERRORS.RETAILER_DOES_NOT_MATCH);
-				}
+			//Checks if product exists in network
+			if(productObjectBuffer.length === 0) {
 				throw new Error(ERRORS.PRODUCT_NOT_FOUND);
 			}
-			throw new Error(ERRORS.RETAILER_IS_NOT_REGISTERED);
+			
+			let productObject = Utils.bufferToJson(productObjectBuffer);
+
+			//Checks if retailer owns the product
+			if(productObject.owner !== retailerID) {
+				throw new Error(ERRORS.RETAILER_DOES_NOT_MATCH);
+			}
+
+			//Checks if the product is expired
+			if(Common.isDrugExpired(productObject)) {
+				throw new Error(ERRORS.DRUG_HAS_EXPIRED);
+			}
+
+			productObject.owner = customerAadhar;
+
+			await ctx.stub.putState(productID, Utils.jsonToBuffer(productObject));
+
+			return productObject;
 		}
 		throw new Error(ERRORS.ROLE_AUTHORIZATION_ERROR);
 	}

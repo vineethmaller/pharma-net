@@ -14,12 +14,13 @@ async function addDrug(drugName, serialNo, manufacturedDate, expiryDate, company
         const drugObjectBuffer = await contract.submitTransaction(CONTRACT.FUNCTIONS.ADD_DRUG, drugName, serialNo, manufacturedDate, expiryDate, companyCRN);
 
         console.log('Response received from network. Parsing...');
+        console.log(drugObjectBuffer.toString());
         let drugObject = JSON.parse(drugObjectBuffer.toString());
         
         console.log('Drug is added to the inventory');
         return drugObject;
     } catch(error) {
-        console.log('Error: ${error}');
+        console.log('Error: ' + error);
         throw new Error(error);
     } finally {
         contractHelper.disconnect();

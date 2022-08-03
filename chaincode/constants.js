@@ -36,7 +36,7 @@ const ERRORS = {
     INVALID_PURCHASE_ORDER : 'The purchase order is invalid',
     PRODUCT_NOT_FOUND : 'The drug is not found in the inventory',
     INVALID_MANUFACTURED_DATE : 'Manufactured date of drug is invalid',
-    INVALID_EXPIRY_DATE : 'Expired date of drug is invalid',
+    INVALID_EXPIRY_DATE : 'Expiry date of drug is invalid',
     DRUG_NOT_FOUND : 'The provided drug does not exist in the inventory',
     PURCHASE_ORDER_NOT_FOUND : 'Purchase order not found for this shipment',
     SHIPMENT_NOT_FOUND : 'Shipment is not found in the database',
